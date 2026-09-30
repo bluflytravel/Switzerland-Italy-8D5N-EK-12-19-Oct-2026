@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Switzerland Italy 8D5N (EK) 12-19 Oct 2026</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: '#00A0C6',
+        'brand-dark': '#007A99',
+        'brand-light': '#E6F7FB',
+        'brand-50': '#F0FAFC',
+        surface: '#FFFFFF',
+        txt: '#1E293B',
+        subtle: '#64748B',
+        accent: '#F59E0B'
+      }
+    }
+  }
+}
+</script>
+  <style>
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: 'Prompt', sans-serif; }
+.font-display { font-family: 'Playfair Display', serif; }
+
+.nav-btn { transition: all 0.3s ease; }
+.nav-btn:hover, .nav-btn.active { background: #00A0C6; color: white; }
+.nav-btn.active { box-shadow: 0 4px 12px rgba(0,160,198,0.3); }
+
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,160,198,0.15); }
+
+.day-card { border-left: 4px solid #00A0C6; }
+
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+.timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: #00A0C6; border: 3px solid white; box-shadow: 0 0 0 2px #00A0C6; }
+
+.meal-card { background: linear-gradient(135deg, #F0FAFC 0%, #FFFFFF 100%); }
+
+.weather-icon { font-size: 2rem; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F0FAFC; }
+::-webkit-scrollbar-thumb { background: #00A0C6; border-radius: 3px; }
+
+.hero-bg {
+  background: linear-gradient(135deg, #00A0C6 0%, #007A99 40%, #005E78 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%);
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, white, transparent);
+}
+
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+.day-tab { cursor: pointer; transition: all 0.2s; }
+.day-tab:hover { background: #E6F7FB; }
+.day-tab.active-day { background: #00A0C6; color: white; border-radius: 9999px; }
+
+/* Responsive image — works on both desktop and mobile */
+.tour-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  display: block;
+}
+
+/* ===================== RESPONSIVE LAYOUT SYSTEM ===================== */
+/* Mobile-first base styles, then desktop overrides at md breakpoint (768px) */
+
+/* --- Navigation: mobile = 3-column grid menu, desktop = single scrollable row --- */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+.nav-btn {
+  white-space: normal;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.15;
+  padding: 0.55rem 0.3rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .nav-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+  }
+  .nav-btn {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    min-height: auto;
+    display: inline-block;
+  }
+}
+
+/* --- Meal / attraction image pairs: stack on mobile, side-by-side on desktop --- */
+.img-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.img-pair > img {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .img-pair {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  .img-pair > img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .tour-img { aspect-ratio: 4 / 3; }
+}
+
+/* --- Timeline: tighter indent + smaller dot offset on mobile --- */
+.timeline-list {
+  margin-left: 0.25rem;
+  border-left-width: 2px;
+  padding-left: 1rem;
+}
+.timeline-dot-wrap { left: -21px; }
+@media (min-width: 768px) {
+  .timeline-list {
+    margin-left: 1.25rem;
+    padding-left: 1.5rem;
+  }
+  .timeline-dot-wrap { left: -31px; }
+}
+
+/* --- Day tabs (วันที่ 1/2/3): full-width equal split on mobile, pill row on desktop --- */
+.day-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+.day-tab {
+  text-align: center;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .day-tabs {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .day-tab {
+    display: inline-flex;
+    min-height: auto;
+  }
+}
+
+/* --- Passenger room cards: 1 column mobile, 2 columns desktop --- */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .rooms-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+.room-card { margin-bottom: 0 !important; }
+
+/* --- Summary stat bar: 2x2 on mobile, single row on desktop --- */
+.stats-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) {
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+}
+
+/* --- Flight cards: stack the times vertically on very small screens --- */
+@media (max-width: 420px) {
+  .flight-row { flex-wrap: wrap; row-gap: 0.75rem; }
+  .flight-row .flight-arrow { order: 3; width: 100%; }
+}
+
+/* --- Image slider: swipeable, one large image at a time --- */
+.img-slider {
+  position: relative;
+  margin-top: 0.75rem;
+}
+.img-slider-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+  scrollbar-width: none;
+}
+.img-slider-track2 {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.75rem;
+  scrollbar-width: none;
+}
+.img-slider-track::-webkit-scrollbar { display: none; }
+.img-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.img-slide img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.img-slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.img-slider-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.55);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.img-slider-dots span.active {
+  background: #ffffff;
+  transform: scale(1.3);
+}
+.img-slider-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15,23,42,0.55);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+/* สไลเดอร์แบบแสดงรูปเต็ม ไม่ตัดรูป */
+.img-slider-full .img-slider-track {
+  align-items: center;
+  background: #F0FAFC;
+}
+.img-slider-full .img-slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  max-height: 80vh;
+}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-white text-txt">
+  <div id="app" class="h-full overflow-auto w-full">
+
+   <!-- Hero -->
+   <header class="hero-bg text-white px-4 py-10 md:py-16 text-center relative z-10">
+    <div class="max-w-4xl mx-auto relative z-10">
+     <p id="companyNameDisplay" class="text-sm tracking-[0.3em] uppercase opacity-80 mb-3">Bluefly Travel</p>
+     <div class="flex items-center justify-center gap-2 md:gap-3 mb-4">
+      <h1 id="mainTitleDisplay" class="font-display text-2xl md:text-5xl font-bold leading-tight">Switzerland Italy (EK)  </h1>
+     </div>
+     <p class="text-lg md:text-xl opacity-90 font-light">8 Days 5 Nights</p>
+     <div class="flex items-center justify-center gap-4 mt-4 text-sm opacity-80">
+      <span>📅 12 - 19 Oct 2026</span> 
+     </div>
+     <div class="flex flex-wrap justify-center gap-2 mt-6">
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Milan</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Como</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Lugano</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Florence</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Bologna</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Ferrara</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Padova</span>
+      <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs">Venice</span>
+     </div>
+    </div>
+   </header>
+
+   <!-- Navigation -->
+   <nav class="sticky top-0 z-50 bg-white shadow-md border-b border-brand-light">
+    <div class="max-w-5xl mx-auto nav-grid p-2">
+     <button onclick="showSection('flights')" class="nav-btn active rounded-full font-medium text-brand border border-brand/20" data-nav="flights"><span class="hidden md:inline">✈️ </span>เที่ยวบิน</button>
+     <button onclick="showSection('itinerary')" class="nav-btn rounded-full font-medium text-brand border border-brand/20" data-nav="itinerary"><span class="hidden md:inline">📋 </span>โปรแกรมทัวร์</button>
+     <button onclick="showSection('country')" class="nav-btn rounded-full font-medium text-brand border border-brand/20" data-nav="country"><span class="hidden md:inline">🌎 </span>ข้อมูลประเทศ</button>
+     <button onclick="showSection('weather')" class="nav-btn rounded-full font-medium text-brand border border-brand/20" data-nav="weather"><span class="hidden md:inline">🌤️ </span>สภาพอากาศ</button>
+     <button onclick="showSection('clothing')" class="nav-btn rounded-full font-medium text-brand border border-brand/20" data-nav="clothing"><span class="hidden md:inline">👔 </span>การแต่งกาย</button>
+     <button onclick="showSection('Passenger')" class="nav-btn rounded-full font-medium text-brand border border-brand/20" data-nav="Passenger">รายชื่อผู้เดินทาง</button>
+    </div>
+   </nav>
+
+   <main class="max-w-5xl mx-auto px-4 py-8">
+
+    <!-- ========== FLIGHTS ========== -->
+    <section id="sec-flights" class="tab-section active fade-in">
+     <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-dark mb-6">✈️ ข้อมูลเที่ยวบิน</h2>
+     <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6">
+      <h4 class="font-semibold text-amber-800 mb-3">🧳 ข้อมูลน้ำหนักกระเป๋า</h4>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+       <div>
+        <p class="font-semibold text-amber-900 mb-2">✈️ Business Class</p>
+        <ul class="text-amber-700 space-y-1 text-xs">
+         <li>• Carry on: 2 ใบ ใบละไม่เกิน 7 กิโลกรัม</li>
+         <li>• Checked bag: 2 ใบ รวมกันไม่เกิน กิโลกรัม</li>
+        </ul>
+       </div>
+       <div>
+        <p class="font-semibold text-amber-900 mb-2">✈️ Economy Class</p>
+        <ul class="text-amber-700 space-y-1 text-xs">
+         <li>• Carry on: 1 ใบ ไม่เกิน 7 กิโลกรัม</li>
+         <li>• Checked bag: 1 ใบ ไม่เกิน 25  กิโลกรัม</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+
+     <h3 class="font-semibold text-brand mb-3">🛫 ขาไป — 13 ตุลาคม 2569</h3>
+     <div class="space-y-4 mb-8">
+      <div class="bg-white border border-brand/20 rounded-2xl p-5 card-hover">
+     <div class="space-y-4 mb-8">
+      <div class="bg-white border border-brand/20 rounded-2xl p-5 card-hover">
+       <div class="flex items-center gap-2 mb-3">
+        <span class="bg-brand text-white px-3 py-1 rounded-full text-xs font-semibold">EK 377</span> <span class="text-sm text-subtle">EMIRATES AIRLINES</span>
+       </div>
+       <div class="flex items-center gap-4">
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">02:50</p>
+         <p class="text-sm font-medium">BKK</p>
+         <p class="text-xs text-subtle">กรุงเทพฯ</p>
+         <p class="text-xs text-subtle">13 ต.ค.</p>
+        </div>
+        <div class="flex-1 flex flex-col items-center">
+         <p class="text-xs text-subtle mb-1">06 ชม. 10 นาที</p>
+         <div class="w-full flex items-center">
+          <div class="w-2 h-2 rounded-full bg-brand"></div>
+          <div class="flex-1 h-[2px] bg-gradient-to-r from-brand to-brand-dark"></div><span class="text-lg">✈️</span>
+         </div>
+        </div>
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">06:00</p>
+         <p class="text-sm font-medium">DXB</p>
+         <p class="text-xs text-subtle">ดูไบ</p>
+         <p class="text-xs text-subtle">13 ต.ค. </p>
+        </div>
+       </div>
+      </div>
+
+      <div class="flex justify-center">
+       <div class="bg-amber-50 border border-amber-200 rounded-full px-4 py-1 text-xs text-amber-700">
+        🔄 เปลี่ยนเครื่องที่ดูไบ 3 ชม. 35 นาที
+       </div>
+      </div>
+
+      <div class="bg-white border border-brand/20 rounded-2xl p-5 card-hover">
+       <div class="flex items-center gap-2 mb-3"><span class="bg-brand text-white px-3 py-1 rounded-full text-xs font-semibold">EK 205</span> <span class="text-sm text-subtle">EMIRATES AIRLINES</span>
+       </div>
+       <div class="flex items-center gap-4">
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">09:35</p>
+         <p class="text-sm font-medium">DXB</p>
+         <p class="text-xs text-subtle">ดูไบ</p>
+         <p class="text-xs text-subtle">13 ต.ค.</p>
+        </div>
+        <div class="flex-1 flex flex-col items-center">
+         <p class="text-xs text-subtle mb-1">6 ชม. 35 นาที</p>
+         <div class="w-full flex items-center">
+          <div class="w-2 h-2 rounded-full bg-brand"></div>
+          <div class="flex-1 h-[2px] bg-gradient-to-r from-brand to-brand-dark"></div><span class="text-lg">✈️</span>
+         </div>
+        </div>
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">14:10</p>
+         <p class="text-sm font-medium">MXP</p>
+         <p class="text-xs text-subtle">มิลาน</p>
+         <p class="text-xs text-subtle">13 ต.ค.</p>
+        </div>
+       </div>
+      </div>
+
+     <h3 class="font-semibold text-brand mb-3">🛫 ขากลับ — 18 ตุลาคม 2569</h3>
+     <div class="space-y-4 mb-8">
+      <div class="bg-white border border-brand/20 rounded-2xl p-5 card-hover">
+       <div class="flex items-center gap-2 mb-3">
+        <span class="bg-brand text-white px-3 py-1 rounded-full text-xs font-semibold">EK 136</span> <span class="text-sm text-subtle">EMIRATES AIRLINES</span>
+       </div>
+       <div class="flex items-center gap-4">
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">15:35</p>
+         <p class="text-sm font-medium">VCE</p>
+         <p class="text-xs text-subtle">เวนิส</p>
+         <p class="text-xs text-subtle">18 ต.ค.</p>
+        </div>
+        <div class="flex-1 flex flex-col items-center">
+         <p class="text-xs text-subtle mb-1">06 ชม. 20 นาที</p>
+         <div class="w-full flex items-center">
+          <div class="w-2 h-2 rounded-full bg-brand"></div>
+          <div class="flex-1 h-[2px] bg-gradient-to-r from-brand to-brand-dark"></div><span class="text-lg">✈️</span>
+         </div>
+        </div>
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">23:55</p>
+         <p class="text-sm font-medium">DXB</p>
+         <p class="text-xs text-subtle">ดูไบ</p>
+         <p class="text-xs text-subtle">18 ต.ค. </p>
+        </div>
+       </div>
+      </div>
+
+      <div class="flex justify-center">
+       <div class="bg-amber-50 border border-amber-200 rounded-full px-4 py-1 text-xs text-amber-700">
+        🔄 เปลี่ยนเครื่องที่ดูไบ 4 ชม. 10 นาที
+       </div>
+      </div>
+
+      <div class="bg-white border border-brand/20 rounded-2xl p-5 card-hover">
+       <div class="flex items-center gap-2 mb-3"><span class="bg-brand text-white px-3 py-1 rounded-full text-xs font-semibold">EK 376</span> <span class="text-sm text-subtle">EMIRATES AIRLINES</span>
+       </div>
+       <div class="flex items-center gap-4">
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">04:05</p>
+         <p class="text-sm font-medium">DXB</p>
+         <p class="text-xs text-subtle">ดูไบ</p>
+         <p class="text-xs text-subtle">19 ต.ค.</p>
+        </div>
+        <div class="flex-1 flex flex-col items-center">
+         <p class="text-xs text-subtle mb-1">6 ชม. 40 นาที</p>
+         <div class="w-full flex items-center">
+          <div class="w-2 h-2 rounded-full bg-brand"></div>
+          <div class="flex-1 h-[2px] bg-gradient-to-r from-brand to-brand-dark"></div><span class="text-lg">✈️</span>
+         </div>
+        </div>
+        <div class="text-center">
+         <p class="text-2xl font-bold text-brand-dark">13:45</p>
+         <p class="text-sm font-medium">BKK</p>
+         <p class="text-xs text-subtle">กรุงเทพฯ</p>
+         <p class="text-xs text-subtle">19 ต.ค.</p>
+        </div>
+       </div>
+      </div>
+    </section>
+
+    <!-- ========== ITINERARY ========== -->
+    <section id="sec-itinerary" class="tab-section fade-in">
+     <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-dark mb-6">📋 โปรแกรมทัวร์</h2>
+     <div class="flex flex-wrap gap-2 mb-6">
+      <button onclick="showDay(1)" class="day-tab active-day px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 1</button>
+      <button onclick="showDay(2)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 2</button>
+      <button onclick="showDay(3)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 3</button>
+      <button onclick="showDay(4)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 4</button>
+      <button onclick="showDay(5)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 5</button>
+      <button onclick="showDay(6)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 6</button>
+      <button onclick="showDay(7)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 7</button>
+      <button onclick="showDay(8)" class="day-tab px-4 py-2 text-sm font-medium rounded-full border border-brand/20">วันที่ 8</button>
+     </div>
+
+     <!-- ===== DAY 1 ===== -->
+     <div id="day-1" class="day-content w-full">
+      <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+       <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</span>
+        <div>
+         <h3 class="font-semibold text-lg">วันจันทร์ที่ 12 ตุลาคม 2569</h3>
+         <p class="text-sm text-subtle">กรุงเทพฯ</p>
+        </div>
+                <span class="ml-auto text-2xl">✈️</span>
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">23:50 น.</span> — คณะพบกันที่ สนามบินสุวรรณภูมิ อาคารผู้โดยสารขาออก ชั้น 4 ประตู 9 เคาน์เตอร์ U สายการบิน Emirates Airline (EK) เจ้าหน้าที่บริษัทบลูฟลาย ทราเวิลคอยให้การต้อนรับและอำนวยความสะดวก</p>
+        </div>
+
+        <div class="bg-brand-50 rounded-xl p-3 text-xs text-subtle flex items-center gap-2">
+         <span>💡</span> แนะนำเดินทางมาถึงสนามบินก่อนเวลานัดหมายอย่างน้อย 30 นาที
+        </div>
+       </div>
+      </div>
+     </div> <!-- /day-1 -->
+
+<!-- ===== DAY 2 ===== -->
+<div id="day-2" class="day-content" style="display:none;">
+      <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+       <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</span>
+        <div>
+         <h3 class="font-semibold text-lg">วันอังคารที่ 13 ตุลาคม 2569</h3>
+         <p class="text-sm text-subtle">กรุงเทพฯ → ดูไบ (สหรัฐอาหรับเอมิเรตส์) → มิลาน (สาธารณรัฐอิตาลี) </p>
+        </div>
+        <span class="ml-auto text-2xl">✈️</span>
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">02:50 น.</span> — 🛫 ออกเดินทางสู่ สนามบินดูไบ โดยสายการบิน Emirates Airline เที่ยวบินที่ EK 377</p>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">06:00 น.</span> — 🛬 เดินทางถึง สนามบินดูไบ แวะเปลี่ยนเครื่อง</p>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">09:35 น.</span> — 🛫 ออกเดินทางสู่ สนามบินมิลาน โดยสายการบิน Emirates Airline เที่ยวบินที่ EK 205</p>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">14:10 น.</span> — 🛬 คณะเดินทางถึง สนามบินมิลาน สาธารณรัฐอิตาลี หลังผ่านพิธีการทางสนามบินแล้ว (เวลาท้องถิ่นช้ากว่าประเทศไทย 5 ชั่วโมง)</p>
+        </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">📸 มหาวิหารดูโอโม่ (Milan Duomo) - La Scala Theatre - Monument to Leonardo da Vinci</p>
+          <p class="text-subtle mt-1">ถ่ายรูปกับ มหาวิหารดูโอโม่ (Milan Duomo) มหาวิหารนี้สร้างด้วยสถาปัตยกรรมแบบกอธิค ที่ถือว่ามีความใหญ่โตเป็นอันดับสามของโลก เริ่มสร้างในปี 1386 การก่อสร้างกินเวลาไป 579 ปี ด้านหน้าอาคารสีขาวมุกที่ประดับด้วยยอดแหลม 135 ยอดและรูปปั้น 3,400 องค์ สูงตระหง่านราวกับมงกุฎรัดเกล้าในเทพนิยาย ผ่านชมโรงละคร La Scala Theatre ความยิ่งใหญ่ของหนึ่งในโรงละครโอเปร่าที่มีชื่อเสียงและทรงเกียรติที่สุดในโลก สัญลักษณ์แห่งศิลปวัฒนธรรมอิตาลีที่เปิดต้อนรับศิลปินเอกมาตั้งแต่ปี ค.ศ. 1778 สัมผัสมนต์เสน่ห์ของสถาปัตยกรรมนีโอคลาสสิก ชม Monument to Leonardo da Vinci หรืออนุสาวรีย์เลโอนาร์โด ดา วินชี แห่งมิลาน อนุสาวรีย์แห่งนี้สร้างขึ้นเพื่อเป็นเกียรติแก่ เลโอนาร์โด ดา วินชี อัจฉริยะบุคคลยุคเรอเนสซองส์ผู้มีความผูกพันและสร้างผลงานทรงคุณค่าไว้ให้กับเมืองมิลานมากมาย ผลงานโดยประติมากรชาวอิตาลี Pietro Magni เปิดให้อนุสาธารณชนเข้าชมเป็นครั้งแรกในปี ค.ศ. 1872</p>
+      <div class="img-slider">
+        <div class="img-slider-track">
+        <div class="img-slide"><img src="https://cdn-imgix.headout.com/media/images/9bf9e991-0f86-408f-ba93-9e66524074c2-1753269677232-294983.jpg" loading="lazy" alt="Milan Duomo 1"></div>
+        <div class="img-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Exterior_Teatro_Alla_Scala_high_quality_01.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" loading="lazy" alt="Milan Duomo 2"></div>
+       <div class="img-slide"><img src="https://media.voicemap.me/uploads/sound_bite_image/image/47871/webp_full/Leonardo_Da_Vinci_Photo_by_Fred_Romero.webp" loading="lazy" alt="Milan Duomo 3"></div>
+        </div>
+        <div class="img-slider-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="img-slider-counter">1/3</div>
+        </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Ristorante Dogana</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Tomato bruschetta + slice of pizza Margherita (mozzarella and tomato sauce) / pork medallions with mushrooms / mixed salad / Cake chocolate and cream </p>        
+          <div class="img-slider">
+            <div class="img-slider-track">
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmX4aLN8xfcDayss95m2QTbnP1c0mRtNKm_wWXUWnaqvlG5rLR5PDB00EkJnMtWe8hg_eU5YefUb2g_VN1uiFuUFgfVFjbOrIkhq22K3Ch1LtZJar7qkQC1I38hZU2drVsbxs0n=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QjuxvthI829vkdrhMax4_sgqGVNchi14U1KtATD1nNXEVnONeUtArwDESKpgp8gWIJ24WZ2GGheEkhWrMFrLnFxoW8f5SrdPXWvPszdGDMDDvhrZsCiFaCUwphp9oXthacTXH4WPplYA3A=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 2"></div>              
+            </div>
+            <div class="img-slider-dots"><span class="active"></span><span></span></div>
+            <div class="img-slider-counter">1/2</div>
+            </div><!-- /img-slider -->
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+       </div>
+       <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex items-center gap-2">
+        <span>🏨</span> <strong>นำคณะเข้าสู่ที่พัก Radisson Blu Milan ★★★★</strong>
+       </div>
+      </div>
+     </div><!-- /day-2 -->
+
+     <!-- ===== DAY 3 ===== -->
+     <div id="day-3" class="day-content" style="display:none;">
+      <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+       <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</span>
+        <div>
+         <h3 class="font-semibold text-lg">วันพุธที่ 14 ตุลาคม 2569</h3>
+         <p class="text-sm text-subtle">มิลาน</p>
+        </div>
+        <span class="ml-auto text-2xl">🎓</span>
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+<div class="img-slider img-slider-full">
+  <div class="img-slider-track">
+    <div class="img-slide"><img src="https://i.postimg.cc/YqVjCdrS/kar-tae-ngt-wd-ngan-Krirk-sahr-bs-ks'ad-ngan.jpg" loading="lazy" alt="La Rinascente Milano"></div>
+    <div class="img-slide"><img src="https://i.postimg.cc/q7D5P6X7/kar-tae-ngt-wd-ngan-Krirk.jpg" loading="lazy" alt="การศึกษาดูงาน"></div>
+  </div>
+  <div class="img-slider-dots"><span class="active"></span><span></span></div>
+  <div class="img-slider-counter">1/2</div>
+</div>
+
+<div class="relative">
+  <div class="timeline-dot absolute -left-[31px] top-1"></div>
+  <div class="text-sm">
+    <p><span class="font-semibold text-brand">10:00 - 12:00 น.</span></p>
+    <p class="font-semibold">🎓 มหาวิทยาลัยมิลาน (University of Milan)</p>
+    <p class="text-subtle mt-1">ศึกษาดูงาน มหาวิทยาลัยมิลาน (University of Milan) เป็นหนึ่งในมหาวิทยาลัยรัฐบาลที่ใหญ่ที่สุดและมีชื่อเสียงมากที่สุดแห่งหนึ่งในประเทศอิตาลี ก่อตั้งขึ้นอย่างเป็นทางการในปี ค.ศ. 1924 ผ่านการควบรวมสถาบันอุดมศึกษาที่มีชื่อเสียงในยุคก่อนหน้า เช่น Accademia Scientifico-Letteraria (ก่อตั้ง ค.ศ. 1861) และ Istituti Clinici di Perfezionamento (ก่อตั้ง ค.ศ. 1906) เป็นมหาวิทยาลัยแห่งเดียวในประเทศอิตาลีที่เป็นสมาชิกของเครือข่าย LERU ซึ่งเป็นกลุ่มมหาวิทยาลัยวิจัยชั้นนำของยุโรป (ร่วมกับ Cambridge, Oxford, Zurich และ Sorbonne)</p>
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://d26uhjq9x2kecg.cloudfront.net/generated-images/52bb705c-25f0-4714-aa39-811cf5fda8b4.jpg" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://d26uhjq9x2kecg.cloudfront.net/generated-images/cb084b8e-cd2b-4d18-b764-7d142af3b8bd.jpg" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+
+<div class="relative">
+  <div class="timeline-dot absolute -left-[31px] top-1"></div>
+  <div class="text-sm">
+    <p class="font-semibold">🍽️ รับประทานอาหารกลางวัน ณ ภัตตาคาร</p>
+  </div>
+</div>
+
+<div class="relative">
+  <div class="timeline-dot absolute -left-[31px] top-1"></div>
+  <div class="text-sm">
+    <p><span class="font-semibold text-brand">14:00 - 15:30 น.</span></p>
+    <p class="font-semibold">🎓 La Rinascente</p>
+    <p class="text-subtle mt-1">ศึกษาดูงาน Rinascente รีนาเชนเต ภายใต้การบริหารของกลุ่มเซ็นทรัล เป็นเสมือนต้นแบบของห้างสรรพสินค้าในฝันของผู้คน ด้วยคุณค่าทางประวัติศาสตร์ความงดงามของสถาปัตยกรรม การตกแต่งที่มีมนตร์เสน่ห์ เอกลักษณ์ของร้านค้า นอกจากนี้ยังรวบรวมคอลเล็กชั่นชั้นนำของโลก เป็นที่สุดของด้านแฟชั่น บิวตี้แคร์ ความสวยงาม ดีไซน์และอาหาร เอาไว้ภายในห้างๆเดียว สามารถเดินช้อปต่อได้ที่ถนนช้อปปิ้งตลอดทางมีร้านค้ามากมายตั้งแต่สินค้าแบรนทั่วไปจนถึงแบรนเนมระดับโลก</p>
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/35/5e/f5/rinascente-milano.jpg?w=1200&h=-1&s=1" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://www.mutina.it/media/immagini/150_n_1.jpg" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Shangri La</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Tofu Soup with pork slice and pickled mustard / Steamed whole fish / Pork in chilli sauce / chicken in Hainan style / Tofu with Mixed vegetables / Beef with pepper / Seasonal vegetable </p>        
+          <div class="img-slider">
+            <div class="img-slider-track">
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWm5qCkdGNYerOGDGh1kKxJLEnOOc783dSygUw-gpd7qdP8wLo1N5VoyqP-yojhVoWdew4HicipwylCpDvqb7Ua3UCn2k9fAhCMM5kfrX0Fv5G6_C4h3mTl3Xalr0DEPefWRP-t3=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlp8zniZ39OeXzWtcC5GKF6ZXC8_zIhVTmxYKLYpJ84kZTzjHzZmYGWlwDemEFjSku8x68CePni2FVOGLB_PHx7LlKAMRQjljzLYabMeCmnjySRd6iiFwzjuPWolHQS2cLzRSNXkJQYZDQ=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 2"></div>              
+            </div>
+            <div class="img-slider-dots"><span class="active"></span><span></span></div>
+            <div class="img-slider-counter">1/2</div>
+            </div><!-- /img-slider -->
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+       <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex items-center gap-2">
+        <span>🏨</span> <strong>นำคณะเข้าสู่ที่พัก Radisson Blu Milan ★★★★</strong>
+       </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+     </div><!-- /day-3 -->
+
+<!-- ===== DAY 4 ===== -->
+<div id="day-4" class="day-content" style="display:none;">
+      <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+       <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</span>
+        <div>
+         <h3 class="font-semibold text-lg">วันพฤหัสบดีที่ 15 ตุลาคม 2569</h3>
+         <p class="text-sm text-subtle">มิลาน → โคโม → ลูกาโน (สมาพันธรัฐสวิส) → ฟลอเรนซ์ (สาธารณรัฐอิตาลี) </p>
+        </div>
+        <span class="ml-auto text-2xl">💦</span>
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🏚️ เมืองโคโม (Como) - ทะเลสาบโคโม (Lake Como)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองโคโม (Como) (ใช้เวลาเดินทางประมาณ 40 นาที) ซึ่งได้ชื่อว่าเป็นเมืองริมทะเลสาบที่สวยงามบริเวณพรมแดนอิตาลี สวิตเซอร์แลนด์ ทะเลสาบโคโมที่ล้อมรอบด้วยเทือกเขาแอลป์สูงตระหง่านอันงดงาม จากนั้นนำคณะชม ทะเลสาบโคโม (Lake Como) เป็นทะเลสาบที่ใหญ่เป็นอันดับ 3 ของประเทศ และเป็นหนึ่งในจุดหมายปลายทางทางธรรมชาติที่สวยงามและมีชื่อเสียงที่สุดในยุโรป โดดเด่นด้วยรูปทรงคล้ายตัว Y กลับหัว ล้อมรอบด้วยทิวเขาสูงใหญ่ของเทือกเขาแอลป์ บรรยากาศเงียบสงบ โรแมนติก และหรูหรา บริเวณรอบทะเลสาบเต็มไปด้วยเมืองโบราณน่ารัก วิลล่าหรูหราสไตล์เรอเนสซองส์พร้อมสวนดอกไม้ และเป็นสถานที่พักผ่อนยอดนิยมของเหล่าราชวงศ์ ศิลปิน และเซเลบริตี้ระดับโลก
+          <div class="mt-3">
+           <img src="https://itamcap.com/wp-content/uploads/2023/08/view-of-colorful-town-and-mountain-background-lake-como-italy.jpg" loading="lazy" class="tour-img" alt="Garuda Wisnu Kencana">
+          </div>
+         </div>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">เมืองลูกาโน (Lugano) </p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองลูกาโน (Lugano) (ใช้เวลาเดินทางประมาณ 30 นาที) ได้รับการขนานนามว่าเป็น "เมืองสวิสหัวใจอิตาเลียน" เนื่องจากเป็นพื้นที่พูดภาษาอิตาลี ทำให้เมืองนี้เป็นการผสมผสานอย่างลงตัวระหว่างความเป๊ะ สะอาด ปลอดภัยสไตล์สวิส เข้ากับความมีชีวา อาหารเลิศรส และแสงแดดอบอุ่นสไตล์เมดิเตอร์เรเนียน</p>
+          <div class="mt-3">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa62DGnLR7l0vCYGgo40Z6oplzUgLnxyqLKgP5TNK2JzUeFL24muSErNo&s=10" loading="lazy" class="tour-img" alt="Garuda Wisnu Kencana">
+          </div>
+         </div>
+        </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">📸 Cathedral of Saint Lawrence - โบสถ์เซนต์ร็อคโคแห่งลูการ์โน - โบสถ์ซานตา มาเรีย เดกลี อันโจลี</p>
+          <p class="text-subtle mt-1">ถ่ายรูปด้านหน้า Cathedral of Saint Lawrence เป็นมหาวิทยาลัยศาสนจักรโรมันคาทอลิก และเป็นอาคารทางศาสนาที่มีความสำคัญทางประวัติศาสตร์และสถาปัตยกรรมอย่างมาก ได้รับการยกฐานะเป็นโบสถ์คอเลจิเอต (Collegiate Church) ในปี ค.ศ. 1078 และได้รับการยกฐานะขึ้นเป็นมหาวิหาร (Cathedral) ของสังฆมณฑลลูกาโนในปี ค.ศ. 1888 ทำด้วยหินปูนสีขาวในสไตล์เรอเนซองส์ (Renaissance) อันโดดเด่น ซึ่งสร้างขึ้นในช่วงปลายคริสต์ศตวรรษที่ 15 ถึงต้นคริสต์ศตวรรษที่ 16 (เสร็จสมบูรณ์ราวปี ค.ศ. 1517) ผ่านชม โบสถ์เซนต์ร็อคโคแห่งลูการ์โน (Church of San Rocco) เป็นโบสถ์คาทอลิกประวัติศาสตร์ที่สำคัญแห่งหนึ่ง โบสถ์แห่งนี้ได้รับการทำพิธีเสกขึ้นตระกูลศักดิ์สิทธิ์ (Consecrated) ในปี ค.ศ. 1596 โดยสร้างขึ้นบนพื้นที่เดิมของศาสนสถานเก่าแก่ที่เคยอุทิศให้แก่ Saint Blaise มาตั้งแต่ปี ค.ศ. 1349 การสร้างโบสถ์นี้เชื่อมโยงกับความเชื่อและการอธิษฐานต่อ นักบุญร็อค (Saint Roch / San Rocco) ซึ่งเป็นนักบุญอุปถัมภ์ผู้ปกป้องคุ้มครองผู้ป่วยจากโรคระบาดและกาฬโรค ผ่านชม โบสถ์ซานตา มาเรีย เดกลี อันโจลี (Chiesa di Santa Maria degli Angioli) สร้างขึ้นราวปี ค.ศ. 1499–1515 เดิมเป็นส่วนหนึ่งของอารามนิกายฟรังซิสกัน (Franciscan monastery) ตัวอาคารภายนอกเรียบง่ายตามสถาปัตยกรรมสายโรมาเนสค์และเรอเนซองส์ตอนต้น โบสถ์และส่วนของอารามได้รับการบูรณะเชิงอนุรักษ์อย่างละเอียด และกลายเป็นส่วนหนึ่งของศูนย์กลางศิลปะและวัฒนธรรม Lugano Arte e Cultura (LAC) ในปัจจุบัน</p>
+      <div class="img-slider">
+        <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrd-F6Xgf7hd_xiLQ7s2CG9CSUojUynfPk1ElqyMJmVIvPD4TLWGbyOi0&s=10" loading="lazy" alt="Milan Duomo 1"></div>
+        <div class="img-slide"><img src="https://cdn.sanity.io/images/z6ahwmgv/production/9c68b477564c7413b2f476da935f5017f19aabff-1200x902.jpg?fm=webp&q=90&w=983&h=624" loading="lazy" alt="Milan Duomo 2"></div>
+       <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzyhmOy5PBEwQGrtt-suoIwH27KI-3jh06p0bsaP1PCNIzZ9M-y0KF-6A&s=10" loading="lazy" alt="Milan Duomo 3"></div>
+        </div>
+        <div class="img-slider-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="img-slider-counter">1/3</div>
+        </div>
+        </div>
+      </div>
+
+<div class="relative">
+  <div class="timeline-dot absolute -left-[31px] top-1"></div>
+  <div class="text-sm">
+    <p><span class="font-semibold text-brand">14:00 - 15:30 น.</span></p>
+    <p class="font-semibold">📸 อาคารศาลาว่าการเมืองลูกาโน - ทะเลสาบลูกาโน</p>
+    <p class="text-subtle mt-1">ถ่ายรูปบริเวณ อาคารศาลาว่าการเมืองลูกาโน (Palazzo Civico) เป็นหนึ่งในแลนด์มาร์กทางประวัติศาสตร์และสถาปัตยกรรมที่สำคัญที่สุดของเมืองลูกาโน (Lugano) ตั้งโดดเด่นอยู่ริมจัตุรัส Piazza della Riforma ซึ่งเป็นศูนย์กลางชีวิตชีวาของเมือง สร้างขึ้นระหว่างปี ค.ศ. 1840 ถึง 1844 ตามแบบของสถาปนิกชาวอิตาลี Giacomo Moraglia เดิมทีถูกสร้างขึ้นเพื่อใช้เป็นอาคารรัฐบาลของรัฐทิชิโน (Government Palace) ก่อนที่จะเปลี่ยนมาเป็นศาลาว่าการเมืองลูกาโนในเวลาต่อมา และใช้เป็นสถานที่จัดประชุมสภาเมืองตลอดจนงานพิธีการสำคัญต่างๆ ชม ทะเลสาบลูกาโน (Lake Lugano) อัญมณีแห่งสวิตเซอร์แลนด์ตอนใต้ เป็นทะเลสาบขนาดใหญ่ที่มีทัศนียภาพงดงาม ความโดดเด่นของที่นี่คือการผสมผสานอย่างลงตัวระหว่าง "ความเนียบเรียบหรูสไตล์สวิส" กับ "กลิ่นอายความสดใส ชิลๆ สไตล์อิตาเลียน"</p>
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUsWJBPjjISzD87VVzMzpxPL9o0cvEl2JQAZP-Qy1EscdcmFSN_x8I2MGK&s=10" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://i.ytimg.com/vi/HgmseKv7J10/maxresdefault.jpg" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร New Shanghai</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Daily soup / Spicy salt shrimp / steamed sea bass / Ananas Chicken / Fried eggs with beef / Seasonal Vegetable </p>        
+           <div class="mt-3 flex gap-3">
+           </div>
+          </div>
+         </div>
+         </div>        
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🏚️ เมืองฟลอเรนซ์ (Florence)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองฟลอเรนซ์ (Florence) (ใช้เวลาเดินทางประมาณ 4 ชั่วโมง) เป็นเมืองหลวงของแคว้นทัสคานี (Tuscany) ตั้งอยู่ทางตอนกลางของประเทศอิตาลี ได้รับการยกย่องให้เป็น "เมืองหลวงแห่งศิลปะ" และเป็น "จุดกำเนิดของยุคเรเนซองส์" (Birthplace of the Renaissance) หรือยุคฟื้นฟูศิลปวิทยาการอันโด่งดังของโลก เมืองทั้งเมืองเต็มไปด้วยประวัติศาสตร์ สถาปัตยกรรมระดับมาสเตอร์พีซ และงานศิลปะที่ประเมินค่าไม่ได้ จนได้รับการขึ้นทะเบียนเป็นเมืองมรดกโลกโดยองค์การยูเนสโก (UNESCO)
+          <div class="mt-3">
+           <img src="https://dynamic-media.tacdn.com/media/photo-o/34/1d/4b/fb/caption.jpg?f=webp&w=1000&h=700" loading="lazy" class="tour-img" alt="Garuda Wisnu Kencana">
+          </div>
+         </div>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Mr Wok (Buffet) </p>
+           <div class="mt-3 flex gap-3">
+           </div>
+          </div>
+         </div>
+
+       </div>
+       <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex items-center gap-2">
+        <span>🏨</span> <strong>นำคณะเข้าสู่ที่พัก Radisson Blu Florence ★★★★</strong>
+       </div>
+      </div>
+     </div><!-- /day-4 -->
+
+<!-- ===== DAY 5 ===== -->
+<div id="day-5" class="day-content" style="display:none;">
+      <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+       <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</span>
+        <div>
+         <h3 class="font-semibold text-lg">วันศุกร์ที่ 16 ตุลาคม 2569</h3>
+         <p class="text-sm text-subtle"> ฟลอเรนซ์ → โบโลนญ่า → เฟอร์รารา </p>
+        </div>
+        <span class="ml-auto text-2xl">⛪</span>
+       </div>
+       <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">📸 Palazzo Vecchio - Basilica di Santa Croce</p>
+          <p class="text-subtle mt-1">ถ่ายรูปกับ พระราชวังเก่า (Palazzo Vecchio) เป็นหนึ่งในสถานที่ท่องเที่ยวสำคัญและทรงคุณค่าทางประวัติศาสตร์มากที่สุดแห่งหนึ่งของเมืองฟลอเรนซ์ โดดเด่นด้วยสถาปัตยกรรมสไตล์โกธิกป้อมปราการในศตวรรษที่ 13 และหอคอยความสูง 94 เมตรที่ตั้งโดดเด่นอยู่กลางจัตุรัส Piazza della Signoria ปัจจุบัน Palazzo Vecchio ทำหน้าที่เป็นทั้งที่ทำการเมืองฟลอเรนซ์และพิพิธภัณฑ์ประวัติศาสตร์ ซึ่งเก็บรวบรวมงานศิลปะ ภาพจิตรกรรมฝาผนัง และงานประติมากรรมอันทรงคุณค่าจากยุคเรอเนสซองส์ไว้มากมาย ผ่านชม มหาวิหารซานตา โครเช (Basilica di Santa Croce) เป็นโบสถ์นิกายฟรานซิสกันที่ใหญ่ที่สุดในโลก ได้รับฉายาว่า "Temple of the Italian Glories" (มหาวิหารแห่งเกียรติยศของชาวอิตาลี) เนื่องจากเป็นสถานที่ฝังศพและอนุสรณ์สถานของบุคคลสำคัญระดับโลกในยุคเรอเนสซองส์มากมาย
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://cdn-imgix.headout.com/media/images/d8db4af1cc29ddacb1c2450ad7c1c0da-florence%20palazzo%20vecchio.jpg?auto=compress%2Cformat&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFjv2WYmpOZA_pqbjTxUegJl_hGZ_xWuU1O0sh4hUXIYNJEsTvZgrSuw&s=10" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">Fountain of Neptune - Statue of David</p>
+          <p class="text-subtle mt-1">ชม น้ำพุเนปจูน (Fontana del Nettuno หรือ Fountain of Neptune) เป็นหนึ่งในผลงานปฏิมากรรมและสถาปัตยกรรมชิ้นเอกยุครีเนสซองส์ (Renaissance) ที่ประดิษฐานอย่างโดดเด่นอยู่ ณ จัตุรัสปิอัซซา เดลลา ซินญอเรีย (Piazza della Signoria) ด้านหน้าพระราชวังเวคคิโอ (Palazzo Vecchio) ถูกสร้างขึ้นระหว่างปี ค.ศ. 1563 ถึง 1565 โดยการสั่งการของคอซิโม ที่ 1 เด เมดิชี (Cosimo I de' Medici) แกรนด์ดุ๊กแห่งทัสกานี เพื่อเฉลิมฉลองเนื่องในโอกาสงานอภิเษกสมรสของฟรานเชสโก เด เมดิชี (Francesco de' Medici) บุตรชายของเขากับอาร์ชดัชเชสโยฮันนาแห่งออสเตรีย (Archduchess Joanna of Austria) ชม รูปปั้นเดวิด (Statue of David) เป็นหนึ่งในผลงานประติมากรรมแกะสลักหินอ่อนที่โด่งดังและทรงคุณค่าที่สุดในประวัติศาสตร์ศิลปะโลก สร้างสรรค์โดย มีเกลันเจโล บูโอนาร์โรตี (Michelangelo Buonarroti) ศิลปินอัจฉริยะชาวอิตาลีในยุคเรอเนสซองส์ (Renaissance)
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCb3DymASbtnrR5eDJDHHF2rOmpoTzyn16GgpmKIDYmE53PH5Omb6474&s=10" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://cdn.contexttravel.com/image/upload/v1573827971/blog/10%20Facts%20about%20the%20Statue%20of%20David/DavidPalazzoVecchio.jpg" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Finisterrae</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Tagliatelle (long pasta) with porcini mushrooms / Florentine steak (1 kg for 2 pax) served with baked potatoes and salad / Cantucci and vin santo (Typical almond biscuits served with sweet wine) </p>        
+          <div class="img-slider">
+            <div class="img-slider-track">
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmdw1JuifcJU0PQFzd6-5fFdqH3oC0LyPCjhZKb7SXew-mYrA6dZh6FZ01yzPWeKP2rGxq79jn7rPOniOCl3BpoFi2SbW4z0w0Y_yBrFK9GhwjOuVqzd0gvorLhI-xMU0gAugA=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkHFMDwGm23S2XBqQj7GbYyp-vekq33pbfd1KXLMeRfI9Bi7iat3tUZRDj4MYNeMCGNM4tgEEffqf0hd_R4rU-ig5u_uGueLKToLLkwH2N0mul0Yyd_wEOHpe6zBvtAk22Kwt29=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 2"></div>              
+            </div>
+            <div class="img-slider-dots"><span class="active"></span><span></span></div>
+            <div class="img-slider-counter">1/2</div>
+            </div><!-- /img-slider -->
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🚌 เมืองโบโลนญ่า (Bologna)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองโบโลนญ่า (Bologna) (ใช้เวลาเดินทางประมาณ 1 ชั่วโมง 30 นาที) เป็นเมืองหลวงของแคว้นเอมีเลีย-โรมัญญา (Emilia-Romagna) ตั้งอยู่ทางตอนเหนือของประเทศอิตาลี เป็นเมืองที่มีความสำคัญทั้งในด้านประวัติศาสตร์ วัฒนธรรม และเศรษฐกิจ
+          <div>
+          </div>
+         </div>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">📸 Basilica of San Giacomo Maggiore - หอคอยคู่</p>
+          <p class="text-subtle mt-1">ถ่ายรูปกับ Basilica of San Giacomo Maggiore เป็นมหาวิหารโรมันคาทอลิกที่สำคัญและมีความประวัติศาสตร์ยาวนาน ตั้งอยู่ที่ใจกลางย่านมหาวิทยาลัยของเมืองโบโลนญา (Bologna) โบสถ์แห่งนี้ก่อตั้งขึ้นในช่วงศตวรรษที่ 13 โดยคณะนักนักบุญออกัสติน (Augustinian Order) และถือเป็นหนึ่งในศูนย์รวมทางศาสนาและศิลปกรรมยุคเรอเนซองส์ที่โดดเด่นที่สุดแห่งหนึ่งในเมืองโบโลนญา การก่อสร้างมหาวิหารเริ่มต้นขึ้นในปี ค.ศ. 1267 และแล้วเสร็จในส่วนโครงสร้างหลักช่วงศตวรรษที่ 14 แต่เดิมสร้างขึ้นในสถาปัตยกรรมสไตล์โกธิก (Gothic) แต่ต่อมาในศตวรรษที่ 15 ได้มีการปรับปรุงและตกแต่งเพิ่มเติมครั้งใหญ่ภายใต้การอุปถัมภ์ของตระกูล เบนติโวญโย (Bentivoglio) ซึ่งเป็นตระกูลผู้ปกครองเมืองโบโลนญาในยุคนั้น ส่งผลให้โบสถ์มีองค์ประกอบของสถาปัตยกรรมและศิลปะยุคเรอเนซองส์ที่เด่นชัดมากขึ้น ชม ดุเอ ตอร์รี (Due Torri) หรือ "หอคอยคู่" คือสัญลักษณ์ทางประวัติศาสตร์ที่โดดเด่นที่สุดแห่งเมืองโบโลญญา ในช่วงยุคกลาง (ศตวรรษที่ 12-13) โบโลญญาเคยได้ชื่อว่าเป็น "เมืองแห่งหอคอย" เนื่องจากมีหอคอยสูงสร้างขึ้นมากกว่า 100-180 แห่งโดยตระกูลขุนนางต่าง ๆ เพื่อแสดงถึงความมั่งคั่ง อำนาจ และใช้เป็นป้อมปราการสังเกตการณ์ทางทหาร แต่ปัจจุบันเหลือรอดมาเพียงประมาณ 20 แห่ง โดยมีหอคอยคู่ทั้งสองแห่งนี้เป็นสัญลักษณ์หลัก
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCmZoVGJsyFOVOWARa87mB3btm02-iZ1-jMb-B5yujoSLE0dhgO01DWvXn&s=10" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0Bzo5JGklvcz_JFPo7USree2k7kobKpLVl-C5ywOkAtgtEAFzzO8bLM8&s=10" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">📸 Bologna City Hall - Basilica of San Petronio</p>
+          <p class="text-subtle mt-1">ผ่านชม ศาลาว่าการเมืองโบโลญญ่า (Bologna City Hall) เดิมทีอาคารแห่งนี้เป็นที่พักอาศัยของ Accursius (Accursio) นิติกรและอาจารย์ผู้ทรงอิทธิพลแห่งมหาวิทยาลัยโบโลญญ่า ต่อมาในคริสต์ศตวรรษที่ 13 เทศบาลเมืองได้ซื้ออาคารเพื่อเปลี่ยนเป็นสถานที่ทำการของข้าราชการและศูนย์กลางบริหารเมือง ตัวอาคารเป็นกลุ่มอาคารโบราณที่ขยายเพิ่มเติมหลายครั้งตลอดหลายศตวรรษ ตั้งแต่ยุคกลาง ยุคเรเนสซองส์ จนถึงยุคบาโรก ทำให้มีลักษณะทางสถาปัตยกรรมที่หลากหลายแต่กลมกลืน ผ่านชม มหาวิหารซานเปโตรนิโอ (Basilica of San Petronio) ตั้งอยู่ ณ จัตุรัสปิอัซซา มัจจอเร (Piazza Maggiore) ใจกลางเมืองโบโลนญ่า เป็นหนึ่งในวิหารสถาปัตยกรรมกอธิกอิฐที่ใหญ่ที่สุดในโลก โดยสร้างขึ้นเพื่ออุทิศให้แก่ นักบุญเปโตรนิโอ (San Petronio) บิชอปผู้เป็นนักบุญคุ้มครองเมืองโบโลนญาในศตวรรษที่ 5 เริ่มสร้างขึ้นเมื่อปี ค.ศ. 1390 ออกแบบโดยสถาปนิก อันโตนิโอ ดิ วินเชนโซ (Antonio di Vincenzo) เพื่อเป็นสัญลักษณ์แห่งเสรีภาพและความภาคภูมิใจของพลเมืองโบโลนญ่า ในปี ค.ศ. 1530 ที่นี่ถูกใช้เป็นสถานที่ประกอบพิธีบรมราชาภิเษกสมเด็จพระจักรพรรดิชาลส์ที่ 5 แห่งจักรวรรดิโรมันอันศักดิ์สิทธิ์ โดยสมเด็จพระสันตะปาปาเคลเมนต์ที่ 7
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCPgCQSuO_An9wKEpRttBBK6L2C0VtNsTHlxoVBKhKH9nr0YYDqsxjVNVb&s=10" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaOBzstsvadPyCeI1dG27Z8pFdyfiyzPXR7R2DE1dL-cAWJOHP3OGmBy8&s=10" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🛍️ Via dell'Indipendenza</p>
+          <p class="text-subtle mt-1">อิสระช้อปปิ้ง Via dell'Indipendenza เป็นถนนช้อปปิ้งสายหลักและเป็นหนึ่งในย่านการค้าที่มีชื่อเสียงที่สุดของเมืองโบโลญญ่า (Bologna) ถนนขนาบข้างด้วยซุ้มทางเดินมีหลังคาโค้ง (Porticoes) เป็นเอกลักษณ์ของโบโลญญ่า มีร้านค้าสตรีทแบรนด์ชั้นนำทั้งของอิตาลีและระดับสากล เช่น Zara, H&M, Mango, Benetton, Intimissimi, Kiko Milano และ Sephora
+          <div class="mt-3">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxDschSJhv7cAl9dng8mSWIrT_rq1fIuWOCssZvUzY1E19NFsYs35WZcy&s=10" loading="lazy" class="tour-img" alt="Garuda Wisnu Kencana">
+          </div>
+         </div>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🚌 เมืองเฟอร์รารา (Ferrara)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองเฟอร์รารา (Ferrara) (ใช้เวลาเดินทางประมาณ 1 ชั่วโมง) เป็นเมืองประวัติศาสตร์ที่ตั้งอยู่ในแคว้นเอมีเลีย-โรมาญญา (Emilia-Romagna) ได้รับการยกย่องจาก UNESCO ให้เป็นเมืองมรดกโลก ด้วยผังเมืองยุคเรอเนซองส์ที่สมบูรณ์แบบและการวางระบบเมืองใหม่อันเป็นต้นแบบของยุโรป
+          <div>
+          </div>
+         </div>
+        </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Restaurant Pizzeria Este Bar</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Vegetable Broth, with pumpkin, potatoes and leeks, with croutons / Strozzapreti pasta with chicory and guanciale / Roasted Pork served with salad / Mix of typical desserts / Mineral Water </p>        
+          <div class="img-slider">
+            <div class="img-slider-track">
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TqX47nTCl6rxDi7z4uQjJfzZ-fvfijVZQ-uFZhIdkg4m0u71Q0buKPCAHGtkFGizzv7FdToAo-9P6gwNsl9UsEfnoD2ThNuReJI1v8iC322xyqEWRtOdTEU5hpEImtnYvTMvB6=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl8JCZcpkVSSVIgoPMXwwUfXZ_WmjP2diSquD9n9Az58pLpt8ZhABcPaa1IlctB5TB09msd1L8I1MmvX-bdGa6Jh3D8VmY6-FvmpdGM_87BbeSRAZZ3wcCphNIjIuLltf0X8R1vQfMBZ_p4=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 2"></div>              
+            </div>
+            <div class="img-slider-dots"><span class="active"></span><span></span></div>
+            <div class="img-slider-counter">1/2</div>
+            </div><!-- /img-slider -->
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+       </div>
+       <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex items-center gap-2">
+        <span>🏨</span> <strong>นำคณะเข้าสู่ที่พัก Radisson Hotel Ferrara ★★★★</strong>
+       </div>
+      </div>
+     </div><!-- /day-5 -->
+
+<!-- ===== DAY 6 ===== -->
+<div id="day-6" class="day-content" style="display:none;">
+  <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</span>
+      <div>
+        <h3 class="font-semibold text-lg">วันเสาร์ที่ 17 ตุลาคม 2569</h3>
+        <p class="text-sm text-subtle">เฟอร์รารา → ปาโดวา → เวนิส</p>
+      </div>
+      <span class="ml-auto text-2xl">🏝️</span>
+    </div>
+    <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🚌 เมืองปาโดวา (Padova) </p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองปาโดวา (Padova) (ใช้เวลาเดินทางประมาณ 1 ชั่วโมง) เมืองท่องเที่ยวของแคว้นเวเนโต ซึ่งเป็น 1 ใน 20 แคว้นที่ตั้งอยู่ทางตอนเหนือของประเทศอิตาลี และยังเป็นแคว้นหนึ่งที่มีนักท่องเที่ยวมากที่สุดแห่งหนึ่งอีกด้วย ถือว่าเป็นเมืองที่เก่าแก่ที่สุดในภาคเหนือของอิตาลี และยังมีชื่อเสียงไม่น้อยไปกว่าเมืองท่องเที่ยวอื่นๆของประเทศ เนื่องจากภายในตัวเมืองนั้น มากมายไปด้วยสิ่งก่อสร้างที่ถือว่าเป็นศูนย์กลางประวัติศาสตร์ที่มีความสำคัญมากแห่งหนึ่งของประเทศ
+          <div>
+          </div>
+         </div>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">📸 มหาวิทยาลัยปาโดวา (University of Padova) 1222</p>
+          <p class="text-subtle mt-1">ชม มหาวิทยาลัยปาโดวา (University of Padova) ก่อตั้งขึ้นเมื่อปี ค.ศ. 1222 เป็นหนึ่งในมหาวิทยาลัยที่เก่าแก่ที่สุดในโลกที่ยังคงเปิดดำเนินการอยู่ และมีชื่อเสียงระดับโลก โดยเฉพาะในด้านการแพทย์ ดาราศาสตร์ และวิทยาศาสตร์ บุคคลสำคัญในประวัติศาสตร์อย่าง กาลิเลโอ กาลิเลอี (Galileo Galilei) ก็เคยดำรงตำแหน่งศาสตราจารย์สอนวิชาคณิตศาสตร์และดาราศาสตร์ที่นี่เช่นกัน ชม ลานโบราณแห่งวังโบ (Cortile Antico del Bo) เป็นหัวใจทางประวัติศาสตร์และสถาปัตยกรรมของมหาวิทยาลัยปาโดวา (University of Padova) ตัวลานโบราณได้รับการออกแบบอย่างงดงามในสไตล์เรอเนซองส์ โดยสถาปนิก Andrea Moroni ช่วงกลางศตวรรษที่ 16 ประกอบด้วยระเบียงเสาโค้งสองชั้น (Two-tiered Loggia) ตามผนัง เพดาน และเสาของระเบียงถูกตกแต่งด้วย ตราประจำตระกูล (Coat of Arms) และสัญลักษณ์นับพันของศิษย์เก่า คณาจารย์ และผู้บริหารระดับสูง (Rectors) ที่เคยผ่านมหาวิทยาลัยแห่งนี้ตลอดหลายศตวรรษ
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://smapse.com/storage/2018/09/1200px-basilica-di-sant-antonio-da-padova.jpg" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrerZ7ahJiTaqCDM2GGUyAOi11Xlu5PoFVsRjjvTtRy9-3I_llmW34ctA&s=10" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🚌 เมืองเมสเตร (Mestre)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองเมสเตร (Mestre) (ใช้เวลาเดินทางประมาณ 30 นาที) เป็นเขตเมืองขนาดใหญ่ที่ตั้งอยู่บนฝั่งแผ่นดินใหญ่ของประเทศอิตาลี ตรงข้ามกับเกาะประวัติศาสตร์ของเวนิส (Venice) แม้ว่าในทางราชการและการบริหาร เมสเตรจะถูกนับเป็นส่วนหนึ่งของเทศบาลเมืองเวนิส (Comune di Venezia) ตั้งแต่ปี ค.ศ. 1926
+          <div>
+          </div>
+         </div>
+        </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารกลางวัน ณ ภัตตาคาร Mozi</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Seaweed soup with eggs / Gong Bao chicken / Steamed whole fish (Seabass) / Omelet / Sauteed shrimps / Seasonal vegetables </p>        
+          <div class="img-slider">
+            <div class="img-slider-track">
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnHQ-p9Qa3vazba4q3mtERTZLm2FgZENP9wDthbDkPoo_N7mH-_AYQgrAGM5sEdAnNifvx2Nqel-EIzFP6aqbgKgRnaEq9HhjzEKhXIEPLr9_QoCk5GY25-eOk8BPdqQGcIw8oz=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
+              <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl4c71HUi-GQgOcHD3f1k1MGaxaqHS1SvvOxj_FL9QH8rvCFW4Z7y5qRfReeb4woNNngXVGqP3XnJsnYditD77S3r2w8M9Nc4kZ_9gKmjfmhFmhoz39R4iNd0ZeD8hpmUsfJh3clA=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 2"></div>              
+            </div>
+            <div class="img-slider-dots"><span class="active"></span><span></span></div>
+            <div class="img-slider-counter">1/2</div>
+            </div><!-- /img-slider -->
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">🚤 เมืองเวนิส (Venice)</p>
+          <p class="text-subtle mt-1">เดินทางสู่ เมืองเวนิส (Venice) (ใช้เวลาเดินทางประมาณ 15 นาที) เมืองที่เริ่มต้นจากการเป็นชุมชนของผู้อพยพหนีภัยสงครามจากการล่มสลายของจักรวรรดิโรมันในช่วงศตวรรษที่ 5 โดยได้สร้างเมืองขึ้นบนเกาะขนาดเล็กและดินเลนกลางทะเลสาบ จนกระทั่งเติบโตอย่างก้าวกระโดดกลายเป็น "สาธารณรัฐเวนิส" ผู้ทรงอิทธิพลและเป็นมหาอำนาจทางการค้าและการเดินเรือที่มั่งคั่งที่สุดในแถบทะเลเมดิเตอร์เรเนียนช่วงยุคกลาง เมืองนี้ผ่านการปกครองโดยผู้นำที่เรียกว่า "ดอจ" (Doge) นานกว่าพันปี ก่อนจะถูกเนโปเลียนพิชิตในปี ค.ศ. 1797 และกลายมาเป็นส่วนหนึ่งของประเทศอิตาลีในปัจจุบัน พร้อมได้รับการยกย่องให้เป็นเมืองมรดกโลกที่มีเอกลักษณ์
+          <div>
+          </div>
+         </div>
+        </div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">📸 Bridge of Sighs - Dage's Palace - Piazza San Marco</p>
+          <p class="text-subtle mt-1">ชม สะพานถอนหายใจ (Bridge of Sighs) ที่ในอดีตเมื่อนักโทษเดินออกจากห้องพิพากษาไปสู่สถาที่คุมขังจะได้มีโอกาสเห็นแสงสว่างและโลกภายนอกเป็นครั้งสุดท้ายระหว่างเดินผ่านช่องหน้าต่างที่สะพานนี้ ซึ่งเชื่อมต่อกับ พระราชวังดอดจ์ (Dage's Palace) สถานที่พำนักของเจ้าผู้ครองนครเวนิส ในประวัติศาสตร์มีนักโทษที่เราคุ้นชื่อกันดีในปัจจุบันเคยเดินผ่านสะพานแห่งนี้ซึ่งก็คือ คาสโนว่า หรือชื่อเต็มว่า Giacomo Girolamo Casanova ชมบริเวณ จตุรัสซานมาร์โค (Piazza San Marco) ที่มีความโดดเด่นของโบสถ์ซานมาร์โค (St.Mark's Bacilica) ที่มีโดมใหญ่ 5 โดม ตามแบบศิลปะไบแซนไทน์</p>
+      <div class="img-slider">
+        <div class="img-slider-track">
+        <div class="img-slide"><img src="https://visit-venice-italy.global.ssl.fastly.net/pics/bridges_venice/venice-saint-mark-doge-palace-bridge-of-sighs-01.jpg" loading="lazy" alt="Milan Duomo 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlECbYCJoOxyV9RE8fuZxtM_SBG1vvDeR3c8RoNn59hBFUQ5EBDoDcNMo&s=10" loading="lazy" alt="Milan Duomo 2"></div>
+       <div class="img-slide"><img src="https://lovevenice.net/wp-content/uploads/2023/10/san-marco-venice.jpg" loading="lazy" alt="Milan Duomo 3"></div>
+        </div>
+        <div class="img-slider-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="img-slider-counter">1/3</div>
+        </div>
+        </div>
+      </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <div class="text-sm">
+          <p class="font-semibold">📸 มหาวิหารซานมาร์โก (St. Mark's Basilica) - หอระฆังซันมาร์โก (St. Mark's Campanile)</p>
+          <p class="text-subtle mt-1">ผ่านชม มหาวิหารซานมาร์โก (St. Mark's Basilica) มหาวิหารนิกายโรมันคาทอลิกที่เก่าแก่และสำคัญที่สุดของเวนิส โดดเด่นด้วยสถาปัตยกรรมสไตล์ไบแซนไทน์อันวิจิตรตระการตาที่ผสมผสานโดมหลังคาโค้งขนาดใหญ่และศิลปะแบบตะวันตกเข้าด้วยกันอย่างลงตัว จนได้รับฉายาว่า "โบสถ์ทองคำ" (Chiesa d'Oro) เพื่อแสดงถึงความมั่งคั่งและอำนาจอันยิ่งใหญ่ของสาธารณรัฐเวนิสในอดีต ถ่ายรูปกับ หอระฆังซันมาร์โก (St. Mark's Campanile) เริ่มสร้างครั้งแรกในคริสต์ศตวรรษที่ 9 เพื่อใช้เป็นประภาคารและหอสังเกตการณ์ ต่อมาใน ค.ศ. 1902 หอระฆังเดิมเกิดพังทลายลงมา จึงได้มีการสร้างขึ้นใหม่ให้เหมือนเดิมทุกประการและเปิดใช้งานอีกครั้งใน ค.ศ. 1912 มีความสูง 98.6 เมตร ถือเป็นสิ่งก่อสร้างที่สูงที่สุดในเวนิส
+    <div class="img-slider">
+      <div class="img-slider-track">
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8T6k7m3VXCjHCtvZYz7SAB4c5Oe4iZ3F6TvFXNDcKGyAl-z5wiK76HwJ5&s=10" loading="lazy" alt="University of Milan 1"></div>
+        <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLaL6B9eq6uaidInb0oj5s2LRDnXrDbuX0Q0Urccll0akw_eLZqzKzn88&s=10" loading="lazy" alt="University of Milan 2"></div>
+      </div>
+      <div class="img-slider-dots"><span class="active"></span><span></span></div>
+      <div class="img-slider-counter">1/2</div>
+    </div>
+  </div>
+</div>
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Trovatore</p>
+          <div class="meal-card rounded-lg p-3 mt-2 text-xs">
+           <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
+           <p>Seafood spaghetti / Grilled salmon served with mixed salad / Ice cream (gelato) / 1/2 lt mineral water </p>        
+          <div class="mt-3">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/95/3c/93/img-20190215-130507-largejpg.jpg?w=1000&h=-1&s=1" loading="lazy" class="tour-img" alt="Sakae Nagoya">
+           </div>            
+           </div><!-- /meal-card -->
+          </div><!-- /text-sm -->
+         </div><!-- /relative -->
+
+    </div>
+    <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs flex items-center gap-2">
+      <span>🏨</span> <strong>นำคณะเข้าสู่ที่พัก Voco Venice Mestre - The Quid ★★★★</strong>
+    </div>
+  </div>
+</div><!-- /day-6 -->
+
+<!-- ===== DAY 7 ===== -->
+<div id="day-7" class="day-content" style="display:none;">
+  <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</span>
+      <div>
+        <h3 class="font-semibold text-lg">วันอาทิตย์ที่ 18 ตุลาคม 2569 </h3>
+        <p class="text-sm text-subtle">เวนิส (สาธารณรัฐอิตาลี) → ดูไบ (สหรัฐอาหรับเอมิเรตส์)</p>
+      </div>
+      <span class="ml-auto text-2xl">✈️</span>
+    </div>
+    <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+      <div class="relative">
+        <div class="timeline-dot absolute -left-[31px] top-1"></div>
+        <div class="text-sm">
+          <p class="font-semibold">🛍️ Designer Outlet Noventa di Piave</p>
+          <p class="text-subtle mt-1">เดินทางสู่ Designer Outlet Noventa di Piave เป็นหนึ่งในเอาท์เล็ทระดับไฮเอนด์ที่หรูหราและได้รับความนิยมมากที่สุดในภูมิภาคเวเนโต เอาท์เล็ทได้รับการออกแบบอย่างพิถีพิถันในสถาปัตยกรรมสไตล์เวเนเชียนที่ได้รับอิทธิพลจากพระราชวังและอาคารประวัติศาสตร์ของเวนิส ตกแต่งด้วยภาพจิตรกรรมฝาผนัง และน้ำพุอย่างงดงาม ให้บรรยากาศการเดินช้อปปิ้งกลางแจ้งที่หรูหราและโปร่งสบาย รวบรวมร้านค้าแบรนด์เนมระดับโลกและแบรนด์ดีไซเนอร์สัญชาติอิตาลีกว่า 160 ร้านค้า แบรนด์ชั้นนำ ได้แก่ Armani, Gucci, Prada, Burberry, Fendi, Bottega Veneta, Salvatore Ferragamo, Versace, Jimmy Choo, Nike และ Stone Island นำเสนอสินค้าแฟชั่น เครื่องหนัง รองเท้า และแอคเซสเซอรี่พร้อมส่วนลดพิเศษตั้งแต่ 30% ถึง 70% ตลอดทั้งปี</p>
+      <div class="img-slider">
+        <div class="img-slider-track">
+        <div class="img-slide"><img src="https://www.mcarthurglen.com/globalassets-v12/corporate/who-we-are/centre-hero-shots/noventa/noventa-chess-piazza.jpg" loading="lazy" alt="Milan Duomo 1"></div>
+        <div class="img-slide"><img src="https://ak-d.tripcdn.com/images/0354h12000t35u07x1037_C_1000_750_Q50.jpg_.webp" loading="lazy" alt="Milan Duomo 2"></div>
+       <div class="img-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9OqZsF6XdJ-SmVbZveFBrMoDEJSi-0vbiiN_kjsWha1nusggA8yEhIHO&s=10" loading="lazy" alt="Milan Duomo 3"></div>
+        </div>
+        <div class="img-slider-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="img-slider-counter">1/3</div>
+        </div>
+        </div>
+      </div>
+       
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand"></span> นำคณะเดินทางสู่ สนามบินเวนิส</p>
+        </div>
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">15:35 น.</span> — 🛫 ออกเดินทางสู่ สนามบินดูไบ โดยสายการบิน Emirates Airline เที่ยวบินที่ EK 136</p>
+        </div>
+
+         <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">23:55 น.</span> — 🛬 เดินทางถึง สนามบินดูไบ แวะเปลี่ยนเครื่อง</p>
+        </div>
+      </div>
+     </div> 
+    
+     </div> <!-- /day-7 -->
+
+<!-- ===== DAY 8 ===== -->
+<div id="day-8" class="day-content" style="display:none;">
+  <div class="day-card bg-white rounded-2xl p-6 shadow-sm border border-brand/10">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">8</span>
+      <div>
+        <h3 class="font-semibold text-lg">วันจันทร์ที่ 19 ตุลาคม 2569</h3>
+        <p class="text-sm text-subtle">ดูไบ → กรุงเทพฯ</p>
+      </div>
+      <span class="ml-auto text-2xl">✈️</span>
+    </div>
+    <div class="space-y-4 ml-5 border-l-2 border-brand/20 pl-6">
+
+        <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">04:05 น.</span> — 🛫 ออกเดินทางสู่ สนามบินสุวรรณภูมิ โดยสายการบิน Emirates Airline เที่ยวบินที่ EK 376</p>
+        </div>
+
+         <div class="relative">
+         <div class="timeline-dot absolute -left-[31px] top-1"></div>
+         <p class="text-sm"><span class="font-semibold text-brand">13:45 น.</span> — 🛬 เดินทางถึง สนามบินสุวรรณภูมิ โดยสวัสดิภาพ</p>
+        </div>
+      </div>
+     </div> 
+</div><!-- /day-8 -->
+
+    </section>
+
+<!-- ========== COUNTRY INFO ========== -->
+<section id="sec-country" class="tab-section fade-in">
+  <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-dark mb-6">🌎 ข้อมูลประเทศอิตาลีและสวิตเซอร์แลนด์</h2>
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10">
+      <h3 class="font-semibold text-brand-dark mb-3 text-lg">🇮🇹 สาธารณรัฐอิตาลี</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-subtle">ชื่อทางการ</span><span class="font-medium">Repubblica Italiana</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เมืองหลวง</span><span class="font-medium">โรม (Rome)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ภาษาราชการ</span><span class="font-medium">ภาษาอิตาเลียน</span></div>
+        <div class="flex justify-between"><span class="text-subtle">สกุลเงิน</span><span class="font-medium">ยูโร (EUR / €)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เวลาท้องถิ่น</span><span class="font-medium">GMT+2 (ช้ากว่าไทย 5 ชม.)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ปลั๊กไฟ</span><span class="font-medium">Type C/F/L (230V / 50Hz)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ประชากร</span><span class="font-medium">~59 ล้านคน</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เบอร์ฉุกเฉิน</span><span class="font-medium">112</span></div>
+      </div>
+    </div>
+    <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10">
+      <h3 class="font-semibold text-brand-dark mb-3 text-lg">🇨🇭 สมาพันธรัฐสวิส</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-subtle">ชื่อทางการ</span><span class="font-medium">Swiss Confederation</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เมืองหลวง</span><span class="font-medium">เบิร์น (Bern)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ภาษา</span><span class="font-medium text-right">เยอรมัน / ฝรั่งเศส / อิตาเลียน<br>(ลูกาโนพูดอิตาเลียน)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">สกุลเงิน</span><span class="font-medium">ฟรังก์สวิส (CHF)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เวลาท้องถิ่น</span><span class="font-medium">GMT+2 (ช้ากว่าไทย 5 ชม.)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ปลั๊กไฟ</span><span class="font-medium">Type C/J (230V / 50Hz)</span></div>
+        <div class="flex justify-between"><span class="text-subtle">ประชากร</span><span class="font-medium">~9 ล้านคน</span></div>
+        <div class="flex justify-between"><span class="text-subtle">เบอร์ฉุกเฉิน</span><span class="font-medium">112 (ตำรวจ 117 / รถพยาบาล 144)</span></div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-6">
+    🕐 ช่วง 12–19 ต.ค. ยุโรปยังใช้เวลาฤดูร้อน (ช้ากว่าไทย <strong>5 ชั่วโมง</strong>)
+  </div>
+ 
+  <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10 mb-6">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+      <h3 class="font-semibold text-brand-dark text-lg">💶 อัตราแลกเปลี่ยนโดยประมาณ</h3>
+      <span class="text-xs bg-white/70 border border-brand/20 text-brand-dark rounded-full px-3 py-1">🔄 อัปเดตล่าสุด 29 ก.ย. 2569</span>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 text-sm">
+      <div>
+        <p class="font-semibold text-brand mb-2">🇪🇺 ยูโร (EUR) — อิตาลี</p>
+        <div class="space-y-2">
+          <div class="flex justify-between"><span class="text-subtle">1 EUR ≈</span><span class="font-medium">~38.1 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">10 EUR ≈</span><span class="font-medium">~381 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">100 EUR ≈</span><span class="font-medium">~3,810 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">500 EUR ≈</span><span class="font-medium">~19,050 บาท</span></div>
+        </div>
+        <p class="text-xs text-subtle mt-2">📊 ช่วง 30 วันที่ผ่านมาเคลื่อนไหวราว 37.9 – 38.6 บาท/EUR (ค่อนข้างนิ่ง)</p>
+      </div>
+      <div>
+        <p class="font-semibold text-brand mb-2">🇨🇭 ฟรังก์สวิส (CHF) — ลูกาโน</p>
+        <div class="space-y-2">
+          <div class="flex justify-between"><span class="text-subtle">1 CHF ≈</span><span class="font-medium">~40.4 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">10 CHF ≈</span><span class="font-medium">~404 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">100 CHF ≈</span><span class="font-medium">~4,040 บาท</span></div>
+          <div class="flex justify-between"><span class="text-subtle">500 CHF ≈</span><span class="font-medium">~20,200 บาท</span></div>
+        </div>
+        <p class="text-xs text-subtle mt-2">📉 ช่วง 30 วันที่ผ่านมาเคลื่อนไหวราว 40.3 – 41.0 บาท/CHF (อ่อนค่าลงเล็กน้อย)</p>
+      </div>
+    </div>
+    <div class="mt-3 grid md:grid-cols-2 gap-3 text-xs">
+      <div class="bg-white/60 rounded-lg p-3 text-subtle">💡 <strong>เทียบราคาง่ายๆ (โดยประมาณ):</strong> 
+      เอสเปรสโซ่ยืนดื่มที่บาร์ €1.2–2 (≈ 46–76 บาท) • อาหารจานหลักในร้านทั่วไป €12–20 (≈ 460–760 บาท) • เจลาโต้ €3–4 (≈ 115–150 บาท) • ห้องน้ำสาธารณะ ~€1 (≈ 38 บาท) • ลูกาโน: กาแฟ CHF 4–5 (≈ 160–200 บาท) อาหารจานหลัก CHF 25–40 (≈ 1,010–1,615 บาท) • นั่งดื่มกาแฟแถวจัตุรัสซานมาร์โกราคาสูงกว่าปกติหลายเท่า</div>
+      
+      <div class="bg-white/60 rounded-lg p-3 text-subtle">💳 <strong>แนะนำ:</strong> แลกเป็นยูโรเป็นหลัก ส่วนฟรังก์สวิสแลกน้อยหรือใช้บัตรแทน เพราะไปลูกาโนแค่ครึ่งวัน ทั้งอิตาลีและสวิสรับบัตรทุกที่ แต่ควรมีเหรียญยูโรไว้จ่ายค่าห้องน้ำ ร้านบางแห่งในสวิสรับยูโรแต่ทอนเป็นฟรังก์ในอัตราที่ไม่ดี <strong>อัตราข้างต้นเป็นอัตรากลางตลาด (mid-market) อัตราซื้อของธนาคาร/ร้านแลกเงินจะสูงกว่า กรุณาตรวจสอบอีกครั้งก่อนเดินทาง</strong></div>
+    </div>
+  </div>
+ 
+  <div class="mt-6 bg-brand-50 rounded-2xl p-5 border border-brand/10">
+    <h4 class="font-semibold text-brand-dark mb-3">🛂 การเข้าเมืองและกฎล่าสุด</h4>
+    <ul class="text-sm text-subtle space-y-2">
+      <li>• <strong>ระบบ EES:</strong> ยุโรปใช้ระบบบันทึกการเข้า–ออกด้วยข้อมูลชีวภาพ (สแกนใบหน้า/ลายนิ้วมือ) ครบทุกด่านตั้งแต่ 10 เม.ย. 2569 ผู้เดินทางไทยจะถูกลงทะเบียนครั้งแรกที่ด่านตรวจคนเข้าเมืองสนามบินมิลาน อาจใช้เวลานานขึ้นเล็กน้อย จึงควรเตรียมพาสปอร์ตและเอกสารวีซ่าให้พร้อม</li>
+      <li>• <strong>ETIAS:</strong> ไม่เกี่ยวกับผู้ถือหนังสือเดินทางไทย เพราะคนไทยต้องขอวีซ่าเชงเก้นอยู่แล้ว และระบบนี้ยังไม่เปิดใช้งาน</li>
+      <li>• <strong>เข้าสวิตเซอร์แลนด์:</strong> สวิสอยู่ในเขตเชงเก้น ใช้วีซ่าเดียวกัน แต่ไม่ได้อยู่ในสหภาพยุโรป จึงมีจุดตรวจศุลกากรที่ชายแดนโคโม–ลูกาโน ให้พกพาสปอร์ตติดตัวตลอดวัน</li>
+    </ul>
+  </div>
+ 
+  <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5">
+    <h4 class="font-semibold text-amber-800 mb-3">⚠️ สิ่งที่ควรรู้และมารยาททางวัฒนธรรม</h4>
+    <ul class="text-sm text-amber-700 space-y-2">
+      <li>• <strong>แต่งกายสุภาพเมื่อเข้าโบสถ์:</strong> มหาวิหารดูโอโม่, ซานมาร์โก ซานตา โครเช และซานเปโตรนิโอ กำหนดให้ปิดไหล่และเข่า ควรพกผ้าพันคอหรือเสื้อคลุมบาง</li>
+      <li>• <strong>ระวังมิจฉาชีพล้วงกระเป๋า:</strong> โดยเฉพาะมิลาน ฟลอเรนซ์ และเวนิส ควรสะพายกระเป๋าไว้ด้านหน้า และไม่วางมือถือบนโต๊ะร้านอาหาร</li>
+      <li>• <strong>ค่าที่นั่ง (Coperto) และทิป:</strong> ร้านอาหารในอิตาลีมักคิดค่าที่นั่งต่อหัวในบิลอยู่แล้ว ทิปไม่บังคับ ปัดเศษให้เล็กน้อยก็เพียงพอ ส่วนสวิสรวมค่าบริการไว้ในราคาแล้ว</li>
+      <li>• <strong>เวนิส:</strong> ไม่นั่งกินอาหารบนบันไดหรือริมสะพาน ไม่ลากกระเป๋าล้อเลื่อนเสียงดัง และเตรียมเดินบนสะพานที่มีบันไดจำนวนมาก</li>
+      <li>• <strong>ร้านกาแฟแบบยืน:</strong> ราคายืนดื่มที่เคาน์เตอร์ถูกกว่านั่งโต๊ะมาก คนอิตาลีนิยมดื่มเอสเปรสโซ่เร็วๆ แล้วไป</li>
+      <li>• <strong>ขอคืนภาษี (VAT Refund):</strong> ซื้อสินค้าที่เอาท์เล็ตนอเวนตา ดิ เปียเว ให้แจ้งพนักงานขอเอกสาร Tax Free ทุกครั้ง อิตาลีมียอดซื้อขั้นต่ำต่อร้านต่อวัน (ประมาณ €70) ควรตรวจสอบเงื่อนไขล่าสุดและเตรียมพาสปอร์ตไว้</li>
+      <li>• <strong>ตรงต่อเวลา:</strong> โดยเฉพาะวันที่ 3 ที่มีนัดศึกษาดูงานที่มหาวิทยาลัยมิลานและ La Rinascente</li>
+    </ul>
+  </div>
+ 
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10">
+      <h4 class="font-semibold text-brand-dark mb-3">🗣️ คำศัพท์พื้นฐานที่ควรรู้ (อิตาเลียน)</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Buongiorno (บวนจอร์โน)</span><span class="text-subtle"> — สวัสดีตอนเช้า/กลางวัน</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Ciao (เชา)</span><span class="text-subtle"> — สวัสดี / ลาก่อน</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Grazie (กราตซีเอ)</span><span class="text-subtle"> — ขอบคุณ</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Prego (เปรโก)</span><span class="text-subtle"> — ด้วยความยินดี / เชิญ</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Scusi (สกูซี)</span><span class="text-subtle"> — ขอโทษ / ขออนุญาต</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Quanto costa? (ควันโต คอสตา)</span><span class="text-subtle"> — ราคาเท่าไหร่?</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Il conto, per favore (อิล คอนโต เปร ฟาโวเร)</span><span class="text-subtle"> — ขอเช็คบิล</span></div>
+        <div class="bg-white/60 rounded-lg p-2"><span class="font-medium">Dov'è...? (โดเว)</span><span class="text-subtle"> — อยู่ที่ไหน?</span></div>
+      </div>
+      <p class="text-xs text-subtle mt-3">💡 ในย่านท่องเที่ยวและโรงแรมสื่อสารด้วยภาษาอังกฤษได้ ส่วนลูกาโนใช้ภาษาอิตาเลียนได้เช่นกัน</p>
+    </div>
+    <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10">
+      <h4 class="font-semibold text-brand-dark mb-3">📱 การสื่อสารและอินเทอร์เน็ต</h4>
+      <ul class="text-sm text-subtle space-y-2">
+        <li>• <strong>eSIM / โรมมิ่ง:</strong> แนะนำ eSIM ยุโรปที่ครอบคลุมอิตาลีและสวิตเซอร์แลนด์ (สวิสไม่ได้อยู่ในสหภาพยุโรป บางแพ็กเกจอาจไม่ครอบคลุม ควรตรวจสอบก่อนซื้อ)</li>
+        <li>• <strong>Wi-Fi:</strong> โรงแรมและร้านอาหารส่วนใหญ่มี Wi-Fi ให้บริการ</li>
+        <li>• <strong>ปลั๊กไฟ:</strong> อิตาลีใช้ Type C/F/L ส่วนสวิสใช้ Type C/J ปลั๊กสองขากลมใช้ได้ทั้งสองประเทศ แนะนำพกอะแดปเตอร์อเนกประสงค์ 1 ตัว</li>
+        <li>• <strong>เบอร์ฉุกเฉิน:</strong> 112 ใช้ได้ทั้งอิตาลีและสวิตเซอร์แลนด์</li>
+        <li>• <strong>สถานเอกอัครราชทูตไทย ณ กรุงโรม</strong> (อิตาลี): +39 06 8622 051 (จันทร์–ศุกร์ เวลาท้องถิ่น)</li>
+        <li>• <strong>สถานเอกอัครราชทูตไทย ณ กรุงเบิร์น</strong> (สวิตเซอร์แลนด์): +41 31 970 3030 • งานคุ้มครองคนไทยในต่างประเทศ: +41 31 970 3425</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WEATHER ========== -->
+<section id="sec-weather" class="tab-section fade-in">
+  <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-dark mb-2">🌤️ สภาพอากาศ</h2>
+  <p class="text-sm text-subtle mb-2">คาดการณ์จากพยากรณ์ระยะยาวหลายแหล่ง ร่วมกับค่าเฉลี่ยภูมิอากาศช่วงกลางเดือนตุลาคม • อ้างอิง: <a href="https://www.accuweather.com" target="_blank" rel="noopener noreferrer" class="text-brand underline">accuweather.com</a></p>
+  <div class="inline-flex items-center gap-2 text-xs bg-brand-50 border border-brand/20 text-brand-dark rounded-full px-3 py-1 mb-6">🔄 อัปเดตล่าสุด 29 ก.ย. 2569</div>
+ 
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">13 ต.ค. (วันที่ 2)</p>
+      <p class="font-semibold text-sm">มิลาน</p>
+      <div class="weather-icon my-2">☁️</div>
+      <p class="text-2xl font-bold text-brand-dark">21°<span class="text-base font-normal text-subtle">/12°C</span></p>
+      <p class="text-xs text-subtle mt-1">มีเมฆมาก อากาศเย็นสบาย</p>
+      <p class="text-[11px] text-subtle mt-2">✈️ ถึงมิลาน 14:10 น. — เย็นกว่าดูไบมาก ควรพกเสื้อคลุมไว้ในกระเป๋าถือ</p>
+    </div>
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">14 ต.ค. (วันที่ 3)</p>
+      <p class="font-semibold text-sm">มิลาน</p>
+      <div class="weather-icon my-2">🌦️</div>
+      <p class="text-2xl font-bold text-brand-dark">20°<span class="text-base font-normal text-subtle">/12°C</span></p>
+      <p class="text-xs text-subtle mt-1">เมฆบางส่วน อาจมีฝนเล็กน้อยช่วงเช้า</p>
+      <p class="text-[11px] text-subtle mt-2">☔ พกร่มพับหรือเสื้อกันฝนบางๆ</p>
+    </div>
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">15 ต.ค. (วันที่ 4)</p>
+      <p class="font-semibold text-sm">โคโม / ลูกาโน / ฟลอเรนซ์</p>
+      <div class="weather-icon my-2">⛅</div>
+      <p class="text-2xl font-bold text-brand-dark">19°<span class="text-base font-normal text-subtle">/11°C</span></p>
+      <p class="text-xs text-subtle mt-1">แดดสลับเมฆ มีโอกาสฝนช่วงบ่าย</p>
+      <p class="text-[11px] text-subtle mt-2">🏞️ ริมทะเลสาบโคโม/ลูกาโนเย็นกว่ามิลานราว 2–3°C และมีลมบนเรือ (ฟลอเรนซ์อุ่นกว่าเล็กน้อย ตามค่าเฉลี่ยฤดูกาล)</p>
+    </div>
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">16 ต.ค. (วันที่ 5)</p>
+      <p class="font-semibold text-sm">ฟลอเรนซ์ / โบโลนญ่า / เฟอร์รารา</p>
+      <div class="weather-icon my-2">🌧️</div>
+      <p class="text-2xl font-bold text-brand-dark">19°<span class="text-base font-normal text-subtle">/11°C</span></p>
+      <p class="text-xs text-subtle mt-1">มีเมฆมาก มีแนวโน้มฝนเป็นช่วงๆ — วันที่ฝนมีโอกาสมากที่สุดของทริป</p>
+      <p class="text-[11px] text-subtle mt-2">👟 ถนนหินเปียกลื่น ควรใส่รองเท้าพื้นกันลื่น</p>
+    </div>
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">17 ต.ค. (วันที่ 6)</p>
+      <p class="font-semibold text-sm">ปาโดวา / เวนิส</p>
+      <div class="weather-icon my-2">🌤️</div>
+      <p class="text-2xl font-bold text-brand-dark">19°<span class="text-base font-normal text-subtle">/12°C</span></p>
+      <p class="text-xs text-subtle mt-1">แดดสลับเมฆ ฝนน้อย</p>
+      <p class="text-[11px] text-subtle mt-2">💧 เวนิสชื้นและมีลมริมน้ำ ช่วงฤดูใบไม้ร่วงอาจมีน้ำท่วมขังบางจุด (acqua alta)</p>
+    </div>
+    <div class="bg-white border border-brand/10 rounded-2xl p-4 card-hover text-center">
+      <p class="text-xs text-subtle">18 ต.ค. (วันที่ 7)</p>
+      <p class="font-semibold text-sm">เวนิส / Noventa di Piave</p>
+      <div class="weather-icon my-2">🌥️</div>
+      <p class="text-2xl font-bold text-brand-dark">19°<span class="text-base font-normal text-subtle">/12°C</span></p>
+      <p class="text-xs text-subtle mt-1">เมฆมากสลับแดด อากาศเย็นสบาย</p>
+      <p class="text-[11px] text-subtle mt-2">🛍️ ช้อปกลางแจ้งที่เอาท์เล็ต ควรพกเสื้อกันลมบาง</p>
+    </div>
+  </div>
+ 
+  <div class="bg-white border border-brand/10 rounded-2xl p-5 mb-6">
+    <h4 class="font-semibold text-brand-dark mb-3">🌅 ช่วงเวลากลางวัน (โดยประมาณ)</h4>
+    <div class="bg-brand-50 rounded-xl p-3 text-sm">
+      <p class="font-medium">🇮🇹 มิลาน – เวนิส (12–18 ต.ค.)</p>
+      <p class="text-subtle text-xs mt-1">พระอาทิตย์ขึ้น ~07:20–07:45 น. / ตก ~18:20–18:35 น. — กลางวันประมาณ 11 ชั่วโมง และสั้นลงวันละราว 2–3 นาที</p>
+    </div>
+    <p class="text-xs text-subtle mt-3">💡 ฟ้าเริ่มมืดหลัง 18:30 น. ควรวางแผนถ่ายรูปกลางแจ้งช่วงบ่าย และเตรียมเสื้อเพิ่มสำหรับมื้อค่ำ</p>
+  </div>
+ 
+  <div class="mt-2 bg-brand-50 border border-brand/10 rounded-2xl p-5">
+    <h4 class="font-semibold text-brand-dark mb-3">📊 สรุปอากาศช่วง 13–18 ตุลาคม 2569</h4>
+    <div class="grid md:grid-cols-2 gap-4 text-sm">
+      <div>
+        <p class="font-medium">🌡️ อุณหภูมิและท้องฟ้า</p>
+        <p class="text-subtle mt-1">อุณหภูมิกลางวันประมาณ 18–21°C กลางคืนประมาณ 11–13°C ช่วงเช้า–เย็นต่างกันราว 8–9°C ท้องฟ้าโปร่งสลับมีเมฆ เป็นช่วงต้นถึงกลางฤดูใบไม้ร่วงของอิตาลีตอนเหนือ</p>
+      </div>
+      <div>
+        <p class="font-medium">🌧️ ฝน</p>
+        <p class="text-subtle mt-1">แหล่งพยากรณ์ส่วนใหญ่ชี้ว่ามีโอกาสฝนเป็นช่วงๆ ระหว่างวันที่ 14–16 ต.ค. โดยวันที่ 16 มีแนวโน้มฝนมากที่สุด ส่วนวันที่ 17–18 ต.ค. ฟ้าเปิดมากกว่า</p>
+      </div>
+    </div>
+    <div class="mt-3 bg-blue-50 border border-blue-100 rounded-xl p-3 text-xs text-blue-700 flex items-start gap-2">
+      <span>🌡️</span>
+      <span>วันเดินทางยังอยู่นอกช่วงพยากรณ์อากาศระยะสั้น ตัวเลขข้างต้นเป็นแนวโน้มที่แต่ละแหล่งให้ต่างกันเล็กน้อย จึงระบุเป็นช่วงโดยประมาณ ลูกาโนและฟลอเรนซ์อ้างอิงค่าเฉลี่ยฤดูกาลเป็นหลัก กรุณาตรวจสอบพยากรณ์ล่าสุดที่ accuweather.com อีกครั้งก่อนเดินทาง 3–5 วัน</span>
+    </div>
+  </div>
+</section>
+ 
+<!-- ========== CLOTHING ========== -->
+<section id="sec-clothing" class="tab-section fade-in">
+  <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-dark mb-2">👔 คำแนะนำการแต่งกาย</h2>
+  <div class="inline-flex items-center gap-2 text-xs bg-brand-50 border border-brand/20 text-brand-dark rounded-full px-3 py-1 mb-6"> พยากรณ์อากาศล่าสุด ณ วันที่ 29 ก.ย. 2569</div>
+ 
+  <div class="bg-brand-50 rounded-2xl p-5 border border-brand/10 mb-6">
+    <h3 class="font-semibold text-brand-dark mb-2">🌡️ สภาพอากาศโดยรวม</h3>
+    <p class="text-sm text-subtle">กลางเดือนตุลาคมในอิตาลีตอนเหนือ-กลางและลูกาโนเป็นฤดูใบไม้ร่วง กลางวันเย็นสบาย 18–21°C กลางคืนเย็นลงเหลือ 11–13°C มีโอกาสฝนช่วงวันที่ 14–16 ต.ค. อากาศไม่หนาวจัด เหมาะกับการใส่เสื้อหลายชั้นที่ถอดเข้าออกได้ง่าย ไม่จำเป็นต้องใช้เสื้อโค้ทหนาแบบฤดูหนาว</p>
+  </div>
+ 
+  <div class="bg-white border border-brand/10 rounded-2xl p-5 mb-6">
+    <h4 class="font-semibold text-brand-dark mb-3">🧅 หลักการแต่งตัว 3 ชั้น (Layering) สำหรับทริปนี้</h4>
+    <div class="grid md:grid-cols-3 gap-3 text-sm">
+      <div class="bg-brand-50 rounded-xl p-3">
+        <p class="font-medium text-brand-dark">ชั้นที่ 1 — ชั้นใน</p>
+        <p class="text-xs text-subtle mt-1">เสื้อยืดหรือเสื้อแขนยาวบาง เนื้อผ้าระบายอากาศ เดินทั้งวันแล้วอุ่นขึ้นช่วงบ่าย ไม่ต้องใช้ฮีทเทค</p>
+      </div>
+      <div class="bg-brand-50 rounded-xl p-3">
+        <p class="font-medium text-brand-dark">ชั้นที่ 2 — ชั้นให้ความอบอุ่น</p>
+        <p class="text-xs text-subtle mt-1">คาร์ดิแกน ไหมพรมบาง หรือฟลีซน้ำหนักเบา ถอดใส่ง่ายเมื่อเข้าร้านอาหารหรือขึ้นรถบัส</p>
+      </div>
+      <div class="bg-brand-50 rounded-xl p-3">
+        <p class="font-medium text-brand-dark">ชั้นที่ 3 — ชั้นนอก</p>
+        <p class="text-xs text-subtle mt-1">แจ็คเก็ตบางกันลม/กันฝนเบา หรือเสื้อขนเป็ดบางพับเก็บได้ <strong>ช่วยได้มากตอนเช้า-เย็นและวันที่มีฝน</strong></p>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-white border border-brand/10 rounded-2xl p-5 card-hover">
+      <h4 class="font-semibold text-brand-dark mb-3">🧥 เสื้อผ้าหลักที่ต้องเตรียม</h4>
+      <ul class="text-sm space-y-2">
+        <li class="flex items-start gap-2"><span>👕</span> เสื้อยืดหรือเสื้อแขนยาวบาง 4–5 ตัว</li>
+        <li class="flex items-start gap-2"><span>🧥</span> คาร์ดิแกนหรือเสื้อฟลีซน้ำหนักเบา 1–2 ตัว</li>
+        <li class="flex items-start gap-2"><span>🌬️</span> แจ็คเก็ตบางกันลมกันฝน (มีฮู้ดจะดีมาก)</li>
+        <li class="flex items-start gap-2"><span>🧣</span> ผ้าพันคอ ใช้กันหนาวและคลุมไหล่เวลาเข้าโบสถ์</li>
+        <li class="flex items-start gap-2"><span>👖</span> กางเกงขายาวหรือยีนส์ (ไม่แนะนำกางเกงขาสั้น เพราะเข้าโบสถ์ไม่ได้และอากาศเย็นในตอนเช้า-เย็น)</li>
+        <li class="flex items-start gap-2"><span>👟</span> รองเท้าผ้าใบหรือรองเท้าเดินสบายพื้นกันลื่น</li>
+        <li class="flex items-start gap-2"><span>🧦</span> ถุงเท้า 5–6 คู่ (วันฝนตกควรมีสำรอง)</li>
+        <li class="flex items-start gap-2"><span>☂️</span> ร่มพับขนาดเล็ก </li>
+      </ul>
+    </div>
+    </div>
+  
+  <h3 class="font-semibold text-brand-dark text-lg mb-3">📅 แนะนำการแต่งกายตามรายวัน</h3>
+  <div class="space-y-3">
+    <div class="bg-white border-l-4 border-gray-300 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 1 | กรุงเทพฯ → สนามบินสุวรรณภูมิ (12 ต.ค.)</p>
+      <p class="text-xs text-subtle mt-1">👕 แต่งกายสบายสำหรับเดินทางกลางคืน / 🧥 พกเสื้อคลุมหรือแจ็คเก็ตบางไว้ในกระเป๋าถือ เพราะถึงมิลานบ่ายวันรุ่งขึ้นอากาศเย็นกว่าที่ไทยมาก / 🧦 ถุงเท้าช่วยให้หลับสบายบนไฟลท์ยาว</p>
+    </div>
+    <div class="bg-white border-l-4 border-brand rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 2 | ดูไบ → มิลาน (13 ต.ค. | 12–21°C · เมฆมาก)</p>
+      <p class="text-xs text-subtle mt-1">👕 เสื้อแขนยาวบาง + คาร์ดิแกน / 🌬️ แจ็คเก็ตบางเก็บในกระเป๋าถือ ใส่ทันทีเมื่อลงเครื่อง / 👖 กางเกงขายาว / 👟 รองเท้าเดินสบาย เพราะบ่ายมีเดินชมมหาวิหารดูโอโม่</p>
+    </div>
+    <div class="bg-white border-l-4 border-blue-400 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 3 | ศึกษาดูงาน มิลาน (14 ต.ค. | 12–20°C · อาจมีฝนช่วงเช้า)</p>
+      <p class="text-xs text-subtle mt-1">👔 Smart casual สำหรับมหาวิทยาลัยมิลาน / ☔ ร่มพับหรือเสื้อกันฝนบาง / 🛍️ รองเท้าสบายสำหรับเดินช้อปที่ La Rinascente / 🧥 ถอดเสื้อคลุมได้เมื่ออยู่ในอาคาร</p>
+    </div>
+    <div class="bg-white border-l-4 border-teal-400 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 4 | โคโม → ลูกาโน → ฟลอเรนซ์ (15 ต.ค. | 11–19°C · ริมทะเลสาบเย็นกว่า)</p>
+      <p class="text-xs text-subtle mt-1">🧥 ครบ 3 ชั้น เพราะริมทะเลสาบโคโมและลูกาโนลมเย็น / 🧣 ผ้าพันคอบาง (และใช้เข้าโบสถ์ที่ลูกาโนได้) / ☔ ร่มพับเผื่อฝนช่วงบ่าย / 👟 รองเท้าเดินสบาย วันนี้เดินและนั่งรถนาน (~4 ชม. ไปฟลอเรนซ์)</p>
+    </div>
+    <div class="bg-white border-l-4 border-orange-400 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 5 | ฟลอเรนซ์ → โบโลนญ่า → เฟอร์รารา (16 ต.ค. | 11–19°C · มีแนวโน้มฝน)</p>
+      <p class="text-xs text-subtle mt-1">🌬️ <strong>วันที่ต้องเตรียมกันฝนมากที่สุด</strong> — แจ็คเก็ตกันฝนมีฮู้ด + ร่มพับ / 👟 รองเท้าพื้นกันลื่น (ถนนหินฟลอเรนซ์และโบโลนญ่าลื่นเมื่อเปียก) / 🧦 ถุงเท้าสำรอง / 🎒 กระเป๋าสะพายด้านหน้า เพราะย่านโบโลนญ่าคนพลุกพล่าน</p>
+    </div>
+    <div class="bg-white border-l-4 border-red-400 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 6 | เฟอร์รารา → ปาโดวา → เวนิส (17 ต.ค. | 12–19°C · แดดสลับเมฆ)</p>
+      <p class="text-xs text-subtle mt-1">👕 เสื้อแขนยาวบาง + คาร์ดิแกน / ⛪ ปิดไหล่เข่าสำหรับมหาวิหารซานมาร์โก / 👟 รองเท้าสบายพื้นกันลื่น เดินข้ามสะพานและบันไดเยอะ / 💧 เวนิสชื้นและมีลมริมน้ำ ควรมีเสื้อชั้นนอกบางๆ ไว้ตอนเย็น</p>
+    </div>
+    <div class="bg-white border-l-4 border-purple-400 rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 7 | เวนิส → Noventa di Piave → สนามบิน (18 ต.ค. | 12–19°C · เมฆสลับแดด)</p>
+      <p class="text-xs text-subtle mt-1">🛍️ แต่งกายสบายสำหรับเดินช้อปกลางแจ้ง / 🧥 เสื้อบางคลุมไว้ / 💡 ก่อนขึ้นเครื่องบ่าย 15:35 น. ควรเตรียมของช้อปและเสื้อกันหนาวให้จัดเรียงในกระเป๋าเรียบร้อย</p>
+    </div>
+    <div class="bg-white border-l-4 border-brand-dark rounded-r-xl p-4">
+      <p class="font-semibold text-sm">วันที่ 8 | ดูไบ → กรุงเทพฯ (19 ต.ค.)</p>
+      <p class="text-xs text-subtle mt-1">👕 แต่งกายสบายสำหรับวันเดินทาง / 🧥 เสื้อคลุมบางไว้ใช้ตอนแอร์เย็นบนเครื่อง / 💡 เก็บเสื้อกันหนาวและแจ็คเก็ตลงกระเป๋าโหลดก่อนถึงดูไบและกรุงเทพฯ ซึ่งอากาศร้อน</p>
+    </div>
+  </div>
+ 
+  <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5">
+    <h4 class="font-semibold text-amber-800 mb-3">🎒 สิ่งที่ควรพกติดตัว</h4>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+      <div class="flex items-center gap-2"><span>🧥</span> แจ็คเก็ตบางกันลม/กันฝน</div>
+      <div class="flex items-center gap-2"><span>☂️</span> ร่มพับขนาดเล็ก</div>
+      <div class="flex items-center gap-2"><span>🧣</span> ผ้าพันคอ (กันหนาว/คลุมไหล่เข้าโบสถ์)</div>
+      <div class="flex items-center gap-2"><span>🔌</span> อะแดปเตอร์ปลั๊ก C/F/J</div>
+      <div class="flex items-center gap-2"><span>💊</span> ยาประจำตัว</div>
+      <div class="flex items-center gap-2"><span>👟</span> รองเท้าเดินสบายพื้นกันลื่น</div>
+      <div class="flex items-center gap-2"><span>💳</span> บัตรเครดิต/เดบิต + เหรียญยูโรสำหรับห้องน้ำ</div>
+      <div class="flex items-center gap-2"><span>🎒</span> กระเป๋าสะพายแบบมีซิป ป้องกันมิจฉาชีพ</div>
+      <div class="flex items-center gap-2"><span>🧴</span> ครีมทามือ/ลิปมัน ป้องกันผิวแห้ง</div>
+      <div class="flex items-center gap-2"><span>🕶️</span> แว่นกันแดด (แดดยังแรงช่วงกลางวัน)</div>
+      <div class="flex items-center gap-2"><span>🔋</span> พาวเวอร์แบงค์ (ใช้ถ่ายรูปและแผนที่ทั้งวัน)</div>
+      <div class="flex items-center gap-2"><span>🧦</span> ถุงเท้าสำรองสำหรับวันฝนตก</div>
+    </div>
+  </div>
+</section>
+ 
+
+    <!-- ========== PASSENGER ========== -->
+    <section id="sec-Passenger" class="tab-section fade-in">
+     <div style="background: linear-gradient(160deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); border-radius: 1rem; padding: 1.25rem;" class="md:!p-8">
+      <div class="max-w-3xl mx-auto">
+       <header class="text-center mb-8 md:mb-10">
+        <div class="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);">
+         <i data-lucide="plane" style="width:16px;height:16px;color:#60a5fa;"></i>
+         <span class="text-xs font-semibold tracking-widest uppercase" style="color:#93c5fd;">Passenger name</span>
+        </div>
+        <h1 class="font-display text-2xl md:text-4xl font-bold text-white mt-3">รายชื่อผู้เดินทาง</h1>
+        <p class="mt-2 text-sm" style="color:#94a3b8;">ข้อมูลห้องพักของผู้เดินทาง</p>
+       </header>
+       <style>
+        .room-card { background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease; border-radius: 1rem; padding: 1.25rem; }
+        .room-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .dietary-badge { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .dietary-badge2 { background: #c0392b; color: #ffffff; border: 1px solid #c0392b; }        
+        .dietary-badge3 { background: #20B2AA; color: #ffffff; border: 1px solid #20B2AA; }                
+        .dietary-badge4 { background: #1E9345; color: #ED1F26; border: 1px solid #1E9345; }               
+        .room-badge { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+        .room-badge2 { background: #FF99FF; color: #9900FF; border: 1px solid #FF99FF; }        
+        .room-badge3 { background: #99FFCC; color: #336600; border: 1px solid #99FFCC; }        
+        .guest-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+        .guest-row + .guest-row { border-top: 1px dashed #e5e7eb; }
+        .avatar { width: 33px; height: 33px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; color: #fff; }
+       </style>
+       <div class="rooms-grid mb-6">
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-triple" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 1</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Triple Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">1</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. TANACHAT PRATOOMSAWAT</p><p class="text-xs text-gray-400">ผู้อำนวยการหลักสูตรฯ</span></p></div></div><div  class="guest-row"><div class="avatar" style="background:linear-gradient(135deg, #3b82f6,#1d4ed8);">2</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MASTER KITJANAT PRATOOMSAWAT (16 Years)</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg, #ec4899,#be185d);">3</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MASTER KITTIPAT PRATOOMSAWAT (10 Years)</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 2</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">4</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS VITHAVEE PRATOOMSAWAT</p><p class="text-xs text-gray-400">สมาชิกวุฒิสภา</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#ec4899,#be185d);">5</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS KANYANAT PRATOOMSAWAT (7 Years)</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 3</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#ADD495,#80B7A2);">6</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. PAIROAJ JUMLONGRAS</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#AA7C7A,#F898A4);">7</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. BORDIN DUKE</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 4</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#C7E181,#A1CF37);">8</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS THEERADA HOSAJAKUL</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#FB3BB5,#C5047E);">9</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. HASSAPONG PATCHARAPONGPHORN</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 5</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#66E083,#25B34A);">10</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. KAEWCHOT WONGKHAMPHU</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#F39B9B,#E42221);">11</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. BUNDIT KURUSTIENKIJ</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 6</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#1FFFFD,#00999A);">12</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS VIRANPAT CHUCHUAY</p><p class="text-xs text-gray-400">TPS</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#F49368,#EF6524);">13</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS SUPAWWADEE JUTTANO</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 7</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#72A6DA,#3175BC);">14</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. PHANOMGORN SANG A ROON</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#FAB768,#F7941D);">15</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. SAHAPORN HONGSAKORNPRASERT</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 8</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#9AA1D4,#454EA2);">16</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. NARONG DUTSADI</p><p class="text-xs text-gray-400">TPS</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#FED549,#FDCA0A);">17</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. ANAN BOONSANONG</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ทรงคุณวุฒิ</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 9</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#A989CE,#6D419B);">18</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. RACHUN KONGSANAN</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#66E083,#25B34A);">19</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. PONGNARIS PROMCHAK</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 10</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#77CAB8,#77CAB8);">20</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. NATHAWATH PHOOWATTHANATIKARN</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#EE4546,#EE4546);">21</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. NAPHAT PHISUTTHIWONGCHAI</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 11</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Twin Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#77CAB8,#77CAB8);">22</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. WICHART NAWAPISUT</p><p class="text-xs text-gray-400">ผู้ติดตาม</span></p></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#EE4546,#EE4546);">23</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. HANPHONG PHONGKITTHANAYUT</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ที่ปรึกษาคณะอนุกรรมาธิการ</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-triple" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 12</span><span class="badge room-badge"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Triple Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706);">24</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MRS. PHANISARA THAVAROLIT</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div  class="guest-row"><div class="avatar" style="background:linear-gradient(135deg, #3b82f6,#1d4ed8);">25</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS JANISTA TAOSUWAN</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg, #ec4899,#be185d);">26</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MRS. PIMCHAT CHAROENSINKEERATIKUL</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 13</span><span class="badge room-badge2"><i data-lucide="heart" style="width:12px;height:12px;"></i>Double Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#10b981,#047857);">27</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. CHALIT ATHACAMPEEWONG</p><p class="text-xs text-gray-400">MOM</span></p></div></div><div  class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#9933FF,#9900CC);">28</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MRS. RAEKKWAN ATHACAMPEEWONG</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 14</span><span class="badge room-badge2"><i data-lucide="heart" style="width:12px;height:12px;"></i>Double Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#FFCC00, #FF3300);">29</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. NAWA KHACHARAT</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#14b8a6, #0d9488);">30</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS PORNPIMOL PHOLPRAMOOL</p><p class="text-xs text-gray-400">ผู้ติดตาม</p></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 15</span><span class="badge room-badge2"><i data-lucide="heart" style="width:12px;height:12px;"></i>Double Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#ec4899, #be185d);">31</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. PISIT RAMNUCH</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#8b5cf6, #6d28d9);">32</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS SIRIPEN RAMNUCH</p><p class="text-xs text-gray-400">MOM</p></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 16</span><span class="badge room-badge2"><i data-lucide="heart" style="width:12px;height:12px;"></i>Double Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#3b82f6, #1d4ed8);">33</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS VARANGKHANA KIATPANAPIKUL</p><div class="flex flex-wrap items-center gap-2 mt-1"><span class="text-xs text-gray-400">MOM</span></div></div></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#87CEFA,#00CED1);">34</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MRS. KANJANA KIATPANAPIKUL</p><p class="text-xs text-gray-400">ผู้ติดตาม</p></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 17</span>
+        <span class="badge room-badge3"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Single Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#87CEFA,#00CED1);">35</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. MOHAMMAD TAWILEH</p><p class="text-xs text-gray-400">MOM</span></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 18</span>
+        <span class="badge room-badge3"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Single Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#00FF00, #228B22);">36</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MR. NUNTAPORN SUYASUNANONDA</p><p class="text-xs text-gray-400">MOM</span></div></div></div>
+
+        <div class="room-card"><div class="flex flex-wrap items-center gap-2 mb-4"><i data-lucide="bed-double" style="width:20px;height:20px;color:#1e40af;"></i><span class="font-bold text-gray-800 text-lg">ห้องที่ 19</span>
+        <span class="badge room-badge3"><i data-lucide="door-open" style="width:12px;height:12px;"></i>Single Room</span></div><div class="guest-row"><div class="avatar" style="background:linear-gradient(135deg,#FAB768,#F7941D);">37</div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-800 text-sm md:text-base">MISS WANLIYA CHOOSIRI</p><p class="text-xs text-gray-400">ผู้ติดตาม</span></div></div></div>
+
+       <div class="rounded-xl p-4 stats-bar text-sm" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+        <div class="flex items-center gap-2 text-green-300"><i data-lucide="users" style="width:16px;height:16px;"></i><span>ผู้เดินทางทั้งหมด <strong class="text-white">37</strong> ท่าน</span></div>
+        <div class="flex items-center gap-2 text-blue-300"><i data-lucide="bed-double" style="width:16px;height:16px;"></i><span>ห้องพัก <strong class="text-white">19</strong> ห้อง (2 TRP + 10 TWN + 3 SGL + 4 DBL)</span></div>
+       </div>
+      </div>
+     </div>
+    </section>
+
+   </main>
+
+   <!-- Footer -->
+   <footer class="bg-brand-dark text-white text-center py-6 px-4">
+    <p class="text-sm opacity-80" id="footerText">Switzerland Italy (EK) </p>
+    <p class="text-xs opacity-50 mt-1">12 - 19 Oct 2026 | 8 Days 5 Nights</p>
+   </footer>
+  </div>
+
+  <script>
+function showSection(id) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const sec = document.getElementById('sec-' + id);
+  if (sec) { sec.classList.add('active'); sec.classList.remove('fade-in'); void sec.offsetWidth; sec.classList.add('fade-in'); }
+  document.querySelector('[data-nav="' + id + '"]')?.classList.add('active');
+}
+
+function showDay(n) {
+  document.querySelectorAll('.day-content').forEach(d => d.style.display = 'none');
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active-day'));
+  const dayEl = document.getElementById('day-' + n);
+  if (dayEl) { dayEl.style.display = 'block'; dayEl.classList.remove('fade-in'); void dayEl.offsetWidth; dayEl.classList.add('fade-in'); }
+  document.querySelectorAll('.day-tab')[n - 1]?.classList.add('active-day');
+}
+
+// ===== Image slider (swipe carousel) =====
+function initImgSliders(root) {
+  const sliders = (root || document).querySelectorAll('.img-slider');
+  sliders.forEach(slider => {
+    if (slider.dataset.sliderInit) return; // avoid double-binding
+    slider.dataset.sliderInit = '1';
+
+    const track = slider.querySelector('.img-slider-track');
+    const dots = slider.querySelectorAll('.img-slider-dots span');
+    const counter = slider.querySelector('.img-slider-counter');
+    const slideCount = slider.querySelectorAll('.img-slide').length;
+    if (!track || slideCount === 0) return;
+
+    let ticking = false;
+    const updateActive = () => {
+      const slideWidth = track.clientWidth || 1;
+      const idx = Math.round(track.scrollLeft / slideWidth);
+      const clamped = Math.max(0, Math.min(idx, slideCount - 1));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === clamped));
+      if (counter) counter.textContent = (clamped + 1) + '/' + slideCount;
+      ticking = false;
+    };
+
+    track.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActive);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Tapping a dot jumps to that slide
+    dots.forEach((dot, i) => {
+      dot.style.pointerEvents = 'auto';
+      dot.style.cursor = 'pointer';
+      dot.addEventListener('click', () => {
+        track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+      });
+    });
+
+    // Keep the correct slide in view on resize/orientation change
+    window.addEventListener('resize', () => {
+      const idx = Math.round(track.scrollLeft / (track.clientWidth || 1));
+      track.scrollTo({ left: idx * track.clientWidth, behavior: 'auto' });
+    });
+
+    updateActive();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => initImgSliders(document));
+
+const defaultConfig = {
+  main_title: 'SPAIN EXPLORER',
+  company_name: 'Professional Travel Agency',
+  background_color: '#FFFFFF',
+  surface_color: '#F0FAFC',
+  text_color: '#1E293B',
+  primary_action_color: '#00A0C6',
+  secondary_action_color: '#007A99',
+  font_family: 'Prompt',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const t = (k) => config[k] || defaultConfig[k];
+  const el = (id) => document.getElementById(id);
+  if (el('mainTitleDisplay')) el('mainTitleDisplay').textContent = t('main_title');
+  if (el('companyNameDisplay')) el('companyNameDisplay').textContent = t('company_name');
+  document.body.style.backgroundColor = t('background_color');
+  document.body.style.color = t('text_color');
+  document.querySelectorAll('.bg-brand-50, .meal-card').forEach(el => el.style.backgroundColor = t('surface_color'));
+  document.querySelectorAll('.nav-btn.active').forEach(el => { el.style.backgroundColor = t('primary_action_color'); el.style.color = '#fff'; });
+  document.querySelectorAll('.day-tab.active-day').forEach(el => { el.style.backgroundColor = t('primary_action_color'); el.style.color = '#fff'; });
+  document.querySelectorAll('.timeline-dot').forEach(el => { el.style.backgroundColor = t('primary_action_color'); el.style.boxShadow = '0 0 0 2px ' + t('primary_action_color'); });
+  const footer = document.querySelector('footer');
+  if (footer) footer.style.backgroundColor = t('secondary_action_color');
+  const font = t('font_family');
+  const baseSize = t('font_size');
+  document.body.style.fontFamily = font + ', Prompt, sans-serif';
+  document.querySelectorAll('h1').forEach(el => el.style.fontSize = (baseSize * 2.5) + 'px');
+  document.querySelectorAll('h2').forEach(el => el.style.fontSize = (baseSize * 1.75) + 'px');
+  document.querySelectorAll('h3').forEach(el => el.style.fontSize = (baseSize * 1.25) + 'px');
+  document.querySelectorAll('p, li, span, td').forEach(el => { if (!el.closest('h1, h2, h3, h4, button')) el.style.fontSize = baseSize + 'px'; });
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+      ],
+      borderables: [],
+      fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+      fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['main_title', config.main_title || defaultConfig.main_title],
+      ['company_name', config.company_name || defaultConfig.company_name]
+    ])
+  });
+}
+
+lucide.createIcons();
+</script>
+ </body>
+</html>
