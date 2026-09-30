@@ -1,0 +1,1 @@
+# Switzerland-Italy-8D5N-EK-12-19-Oct-2026
