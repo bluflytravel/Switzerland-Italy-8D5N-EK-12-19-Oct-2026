@@ -640,7 +640,7 @@ body { font-family: 'Prompt', sans-serif; }
 <div class="relative">
   <div class="timeline-dot absolute -left-[31px] top-1"></div>
   <div class="text-sm">
-    <p><span class="font-semibold text-brand">10:00 - 12:00 น.</span></p>
+    <p><span class="font-semibold text-brand">11:00 - 13:00 น.</span></p>
     <p class="font-semibold">🎓 มหาวิทยาลัยมิลาน (University of Milan)</p>
     <p class="text-subtle mt-1">ศึกษาดูงาน มหาวิทยาลัยมิลาน (University of Milan) เป็นหนึ่งในมหาวิทยาลัยรัฐบาลที่ใหญ่ที่สุดและมีชื่อเสียงมากที่สุดแห่งหนึ่งในประเทศอิตาลี ก่อตั้งขึ้นอย่างเป็นทางการในปี ค.ศ. 1924 ผ่านการควบรวมสถาบันอุดมศึกษาที่มีชื่อเสียงในยุคก่อนหน้า เช่น Accademia Scientifico-Letteraria (ก่อตั้ง ค.ศ. 1861) และ Istituti Clinici di Perfezionamento (ก่อตั้ง ค.ศ. 1906) เป็นมหาวิทยาลัยแห่งเดียวในประเทศอิตาลีที่เป็นสมาชิกของเครือข่าย LERU ซึ่งเป็นกลุ่มมหาวิทยาลัยวิจัยชั้นนำของยุโรป (ร่วมกับ Cambridge, Oxford, Zurich และ Sorbonne)</p>
     <div class="img-slider">
@@ -655,14 +655,14 @@ body { font-family: 'Prompt', sans-serif; }
 <div class="relative">
   <div class="timeline-dot absolute -left-[31px] top-1"></div>
   <div class="text-sm">
-    <p class="font-semibold">🍽️ รับประทานอาหารกลางวัน ณ ภัตตาคาร</p>
-  </div>
-</div>
+    <p class="text-sm"><span class="font-semibold text-brand">13:30 น.</span> 🍽️ รับประทานอาหารกลางวัน ณ ภัตตาคาร Xier Lepetit (Buffet)</p>
+    </div>
+    </div>
 
 <div class="relative">
   <div class="timeline-dot absolute -left-[31px] top-1"></div>
   <div class="text-sm">
-    <p><span class="font-semibold text-brand">14:00 - 15:30 น.</span></p>
+    <p><span class="font-semibold text-brand">14:30 - 15:30 น.</span></p>
     <p class="font-semibold">🎓 La Rinascente</p>
     <p class="text-subtle mt-1">ศึกษาดูงาน Rinascente รีนาเชนเต ภายใต้การบริหารของกลุ่มเซ็นทรัล เป็นเสมือนต้นแบบของห้างสรรพสินค้าในฝันของผู้คน ด้วยคุณค่าทางประวัติศาสตร์ความงดงามของสถาปัตยกรรม การตกแต่งที่มีมนตร์เสน่ห์ เอกลักษณ์ของร้านค้า นอกจากนี้ยังรวบรวมคอลเล็กชั่นชั้นนำของโลก เป็นที่สุดของด้านแฟชั่น บิวตี้แคร์ ความสวยงาม ดีไซน์และอาหาร เอาไว้ภายในห้างๆเดียว สามารถเดินช้อปต่อได้ที่ถนนช้อปปิ้งตลอดทางมีร้านค้ามากมายตั้งแต่สินค้าแบรนทั่วไปจนถึงแบรนเนมระดับโลก</p>
     <div class="img-slider">
@@ -760,7 +760,6 @@ body { font-family: 'Prompt', sans-serif; }
 <div class="relative">
   <div class="timeline-dot absolute -left-[31px] top-1"></div>
   <div class="text-sm">
-    <p><span class="font-semibold text-brand">14:00 - 15:30 น.</span></p>
     <p class="font-semibold">📸 อาคารศาลาว่าการเมืองลูกาโน - ทะเลสาบลูกาโน</p>
     <p class="text-subtle mt-1">ถ่ายรูปบริเวณ อาคารศาลาว่าการเมืองลูกาโน (Palazzo Civico) เป็นหนึ่งในแลนด์มาร์กทางประวัติศาสตร์และสถาปัตยกรรมที่สำคัญที่สุดของเมืองลูกาโน (Lugano) ตั้งโดดเด่นอยู่ริมจัตุรัส Piazza della Riforma ซึ่งเป็นศูนย์กลางชีวิตชีวาของเมือง สร้างขึ้นระหว่างปี ค.ศ. 1840 ถึง 1844 ตามแบบของสถาปนิกชาวอิตาลี Giacomo Moraglia เดิมทีถูกสร้างขึ้นเพื่อใช้เป็นอาคารรัฐบาลของรัฐทิชิโน (Government Palace) ก่อนที่จะเปลี่ยนมาเป็นศาลาว่าการเมืองลูกาโนในเวลาต่อมา และใช้เป็นสถานที่จัดประชุมสภาเมืองตลอดจนงานพิธีการสำคัญต่างๆ ชม ทะเลสาบลูกาโน (Lake Lugano) อัญมณีแห่งสวิตเซอร์แลนด์ตอนใต้ เป็นทะเลสาบขนาดใหญ่ที่มีทัศนียภาพงดงาม ความโดดเด่นของที่นี่คือการผสมผสานอย่างลงตัวระหว่าง "ความเนียบเรียบหรูสไตล์สวิส" กับ "กลิ่นอายความสดใส ชิลๆ สไตล์อิตาเลียน"</p>
     <div class="img-slider">
@@ -780,7 +779,7 @@ body { font-family: 'Prompt', sans-serif; }
           <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร New Shanghai</p>
           <div class="meal-card rounded-lg p-3 mt-2 text-xs">
            <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
-           <p>Daily soup / Spicy salt shrimp / steamed sea bass / Ananas Chicken / Fried eggs with beef / Seasonal Vegetable </p>        
+           <p>Daily soup, Spicy salt shrimp, Steamed sea bass, Ananas Chicken, Fried eggs with pork, Seasonal Vegetable </p>        
            <div class="mt-3 flex gap-3">
            </div>
           </div>
@@ -1022,7 +1021,7 @@ body { font-family: 'Prompt', sans-serif; }
           <p class="font-semibold">🍽️ รับประทานอาหารกลางวัน ณ ภัตตาคาร Mozi</p>
           <div class="meal-card rounded-lg p-3 mt-2 text-xs">
            <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
-           <p>Seaweed soup with eggs / Gong Bao chicken / Steamed whole fish (Seabass) / Omelet / Sauteed shrimps / Seasonal vegetables </p>        
+           <p>Seaweed soup with eggs, Gong Bao chicken, Steamed whole fish (Seabass), Omelet, Sauteed shrimps, Seasonal vegetables </p>        
           <div class="img-slider">
             <div class="img-slider-track">
               <div class="img-slide"><img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnHQ-p9Qa3vazba4q3mtERTZLm2FgZENP9wDthbDkPoo_N7mH-_AYQgrAGM5sEdAnNifvx2Nqel-EIzFP6aqbgKgRnaEq9HhjzEKhXIEPLr9_QoCk5GY25-eOk8BPdqQGcIw8oz=s680-w680-h510-rw" loading="lazy" alt="Hida Takayama 1"></div>
@@ -1084,7 +1083,7 @@ body { font-family: 'Prompt', sans-serif; }
           <p class="font-semibold">🍽️ รับประทานอาหารค่ำ ณ ภัตตาคาร Trovatore</p>
           <div class="meal-card rounded-lg p-3 mt-2 text-xs">
            <p class="font-medium text-brand-dark mb-1">📋Menu:</p>
-           <p>Seafood spaghetti / Grilled salmon served with mixed salad / Ice cream (gelato) / 1/2 lt mineral water </p>        
+           <p>Seafood spaghetti, Grilled salmon served with mixed salad, Ice cream (gelato), 1/2 lt mineral water </p>        
           <div class="mt-3">
             <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/95/3c/93/img-20190215-130507-largejpg.jpg?w=1000&h=-1&s=1" loading="lazy" class="tour-img" alt="Sakae Nagoya">
            </div>            
