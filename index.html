@@ -361,14 +361,14 @@ body { font-family: 'Prompt', sans-serif; }
         <p class="font-semibold text-amber-900 mb-2">✈️ Business Class</p>
         <ul class="text-amber-700 space-y-1 text-xs">
          <li>• Carry on: 2 ใบ ใบละไม่เกิน 7 กิโลกรัม</li>
-         <li>• Checked bag: 2 ใบ รวมกันไม่เกิน กิโลกรัม</li>
+         <li>• Checked bag: 2 ใบ รวมกันไม่เกิน 40 กิโลกรัม</li>
         </ul>
        </div>
        <div>
         <p class="font-semibold text-amber-900 mb-2">✈️ Economy Class</p>
         <ul class="text-amber-700 space-y-1 text-xs">
          <li>• Carry on: 1 ใบ ไม่เกิน 7 กิโลกรัม</li>
-         <li>• Checked bag: 1 ใบ ไม่เกิน 25  กิโลกรัม</li>
+         <li>• Checked bag: 1 ใบ ไม่เกิน 25 กิโลกรัม</li>
         </ul>
        </div>
       </div>
